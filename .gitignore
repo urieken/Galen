@@ -6,4 +6,4 @@
 /bin
 /.vs
 *.user
-
+/vendors/*
