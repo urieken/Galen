@@ -2,7 +2,7 @@
 #define __ENTRY_POINT_H__
 
 #ifdef GALEN_PLATFORM_WINDOWS
-
+#include <iostream>
 extern Galen::Application* Galen::CreateApplication();
 
 int main(int argc, char** argv) {

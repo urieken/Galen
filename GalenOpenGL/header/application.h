@@ -4,6 +4,7 @@
 #include "core.h"
 
 namespace Galen {
+
 	class GALEN_API Application {
 	public:
 		Application();
