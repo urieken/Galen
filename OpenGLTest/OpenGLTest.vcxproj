@@ -91,11 +91,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32sd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -104,11 +105,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32sd.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,13 +121,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -136,13 +139,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -151,6 +155,9 @@
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
       <Project>{c53214b9-eee2-4416-abc0-92ae8571a62e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendors\glew\build\vc15\glew_static.vcxproj">
+      <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
