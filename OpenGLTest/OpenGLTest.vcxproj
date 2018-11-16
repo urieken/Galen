@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -105,7 +105,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -121,7 +121,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -151,6 +151,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\core.cpp" />
+    <ClCompile Include="source\shader_program.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -159,6 +161,10 @@
     <ProjectReference Include="..\vendors\glew\build\vc15\glew_static.vcxproj">
       <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\core.h" />
+    <ClInclude Include="header\shader_program.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

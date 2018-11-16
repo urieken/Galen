@@ -1,33 +1,25 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 
-#include "logger.h"
+#include "core.h"
+#include "shader_program.h"
 
+#include <memory>
 #include <vector>
-
-#define ASSERT(x) if (!(x)) __debugbreak();
-#define GLCall(x) GLClearError(); x; ASSERT(GLLogCall(#x, __FILE__, __LINE__))
-
-static void GLClearError() {
-	while (::glGetError() != GL_NO_ERROR);
-}
-
-static bool GLLogCall(const char* function, const char* file, int line) {
-	while (GLenum error = ::glGetError()) {
-		LOG_ERROR("OpenGL Error : %d : %s : %s : %d ", error, function, file , line);
-		return false;
-	}
-	return true;
-}
-
-void glfw_error_callback(int error, const char* description) {
-	LOG_SCOPE(__FUNCTION__);
-	LOG_ERROR("ERROR OCCURED : %d [%s]", error, description);
-}
 
 int main(int argc, char** argv) {
 	int nReturn{ 0 };
 
+	{
+		shader_map shaders;
+		insert_shader(shaders, "VERTEX SHADER FILE", GL_VERTEX_SHADER);
+		insert_shader(shaders, "FRAGMENT SHADER FILE", GL_FRAGMENT_SHADER);
+
+		std::unique_ptr<ShaderProgram> pShaderProgram{ std::make_unique<ShaderProgram>() };
+
+		for (shader_map::iterator _iter = shaders.begin(); _iter != shaders.end(); _iter++) {
+			LOG_INFO("%s:0x%xH", _iter->first.c_str(), _iter->second);
+		}
+	}
+	
 	Logger::Instance().Initialize();
 
 	LOG_SCOPE(__FUNCTION__);
@@ -56,6 +48,7 @@ int main(int argc, char** argv) {
 			LOG_INFO("WINDOW CREATED");
 			/* Make the window's context current */
 			::glfwMakeContextCurrent(window);
+
 			if (GLEW_OK == ::glewInit()) {
 				LOG_INFO("GLEW INITIALIZED");
 				LOG_INFO("OPENGL VERSION  : %s", ::glGetString(GL_VERSION));
