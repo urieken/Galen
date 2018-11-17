@@ -1,5 +1,4 @@
 
-#include "core.h"
 #include "shader_program.h"
 
 #include <memory>
@@ -7,18 +6,6 @@
 
 int main(int argc, char** argv) {
 	int nReturn{ 0 };
-
-	{
-		shader_map shaders;
-		insert_shader(shaders, "VERTEX SHADER FILE", GL_VERTEX_SHADER);
-		insert_shader(shaders, "FRAGMENT SHADER FILE", GL_FRAGMENT_SHADER);
-
-		std::unique_ptr<ShaderProgram> pShaderProgram{ std::make_unique<ShaderProgram>() };
-
-		for (shader_map::iterator _iter = shaders.begin(); _iter != shaders.end(); _iter++) {
-			LOG_INFO("%s:0x%xH", _iter->first.c_str(), _iter->second);
-		}
-	}
 	
 	Logger::Instance().Initialize();
 
@@ -71,6 +58,16 @@ int main(int argc, char** argv) {
 
 				GLCall(::glBindBuffer(GL_ARRAY_BUFFER, 0));
 
+				shader_map shaders;
+				insert_shader(shaders, "res/shaders/test.vert", GL_VERTEX_SHADER);
+				insert_shader(shaders, "res/shaders/test.frag", GL_FRAGMENT_SHADER);
+
+				std::unique_ptr<ShaderProgram> pShaderProgram{ std::make_unique<ShaderProgram>() };
+				if (pShaderProgram->CompileShaders(shaders) && pShaderProgram->LinkProgram()) {
+					pShaderProgram->UseProgram();
+					shaders.clear();
+				}
+
 				/* Loop until the user closes the window */
 				while (!::glfwWindowShouldClose(window))
 				{
@@ -85,6 +82,8 @@ int main(int argc, char** argv) {
 					/* Poll for and process events */
 					::glfwPollEvents();
 				}
+				::glBindBuffer(GL_ARRAY_BUFFER, 0);
+				::glDeleteBuffers(1, &buffer);
 				::glfwTerminate();
 			}
 			else {

@@ -98,6 +98,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32sd.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>robocopy /mir /xo /mt:2 $(ProjectDir)res $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\res</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,6 +115,9 @@
       <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32sd.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>robocopy /mir /xo /mt:2 $(ProjectDir)res $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\res</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -130,6 +136,9 @@
       <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>robocopy /mir /xo /mt:2 $(ProjectDir)res $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\res</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -148,6 +157,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration)-$(Platform)\glfw\;$(SolutionDir)bin\$(Configuration)-$(Platform)\glew_static\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;User32.lib;Gdi32.lib;User32.lib;Shell32.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>robocopy /mir /xo /mt:2 $(ProjectDir)res $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\res</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -165,6 +177,10 @@
   <ItemGroup>
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\shader_program.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\test.frag" />
+    <None Include="res\shaders\test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
