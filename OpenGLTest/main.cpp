@@ -1,4 +1,4 @@
-
+#include "texture.h"
 #include "shader_program.h"
 
 #include <memory>
@@ -22,6 +22,11 @@ int main(int argc, char** argv) {
 	}
 	else {
 		LOG_INFO("GLFW INITIALIZED");
+
+		::glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		::glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		::glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 		::glfwSetErrorCallback(glfw_error_callback);
 		/* Create a windowed mode window and its OpenGL context */
 		window = ::glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
@@ -41,12 +46,19 @@ int main(int argc, char** argv) {
 				LOG_INFO("GLEW INITIALIZED");
 				LOG_INFO("OPENGL VERSION  : %s", ::glGetString(GL_VERSION));
 
-				std::vector<float> vertices = 
+				//std::vector<float> vertices =
+				//{
+				//	-0.5f,  0.5f, 0.0f, 1.0f,
+				//	-0.5f, -0.5f, 0.0f, 0.0f,
+				//	 0.5f, -0.5f, 1.0f, 0.0f,
+				//	 0.5f,  0.5f, 1.0f, 1.0f
+				//};
+				std::vector<float> vertices =
 				{
-					-0.5f,  0.5f,
-					-0.5f, -0.5f,
-					 0.5f, -0.5f,
-					 0.5f,  0.5f
+					-0.5f,  0.5f, //0.0f, 1.0f,
+					-0.5f, -0.5f, //0.0f, 0.0f,
+					 0.5f, -0.5f, //1.0f, 0.0f,
+					 0.5f,  0.5f  //, 1.0f, 1.0f
 				};
 
 				std::vector<unsigned int> indices = 
@@ -55,14 +67,20 @@ int main(int argc, char** argv) {
 					2, 3, 0
 				};
 
+				unsigned int vao;
+				GLCall(::glGenVertexArrays (1, &vao));
+				GLCall(::glBindVertexArray(vao));
+
 				unsigned int buffer;
 
 				GLCall(::glGenBuffers(1, &buffer));
 				GLCall(::glBindBuffer(GL_ARRAY_BUFFER, buffer));
 				GLCall(::glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW));
 
-				GLCall(::glEnableVertexAttribArray(0));
-				GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
+				//GLCall(::glEnableVertexAttribArray(0));
+				//GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
+				//GLCall(::glEnableVertexAttribArray(1));
+				//GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)2));
 
 				unsigned int index_buffer;
 
@@ -81,7 +99,16 @@ int main(int argc, char** argv) {
 					shaders.clear();
 				}
 				
+				//Texture texture{"res/images/opengl.png"};
+				//texture.Bind();
+				//pShaderProgram->SetUniform1i("u_Texture", 0);
+
 				//pShaderProgram->SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
+
+				pShaderProgram->UnuseProgram();
+				GLCall(::glBindBuffer(GL_ARRAY_BUFFER, 0));
+				GLCall(::glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+				
 				float red = 0.0f;
 				float increment = 0.01f;
 				/* Loop until the user closes the window */
@@ -97,7 +124,16 @@ int main(int argc, char** argv) {
 						increment = 0.01f;
 					}
 					red += increment;
+
+					pShaderProgram->UseProgram();
 					pShaderProgram->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
+					GLCall(::glBindBuffer(GL_ARRAY_BUFFER, buffer));
+
+					GLCall(::glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer));
+
+					GLCall(::glEnableVertexAttribArray(0));
+					GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
+
 					//GLCall(::glDrawArrays(GL_TRIANGLES, 0, 3));
 					GLCall(::glDrawElements(GL_TRIANGLES, 6 , GL_UNSIGNED_INT, 0));
 

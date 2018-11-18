@@ -165,6 +165,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\core.cpp" />
     <ClCompile Include="source\shader_program.cpp" />
+    <ClCompile Include="source\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -173,14 +174,22 @@
     <ProjectReference Include="..\vendors\glew\build\vc15\glew_static.vcxproj">
       <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\vendors\stb_image\stb_image.vcxproj">
+      <Project>{76bd1785-6b48-42fe-911b-6f4ad7654ea5}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\shader_program.h" />
+    <ClInclude Include="header\texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.frag" />
     <None Include="res\shaders\test.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\images\cpp.png" />
+    <Image Include="res\images\opengl.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
