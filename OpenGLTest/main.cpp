@@ -43,9 +43,16 @@ int main(int argc, char** argv) {
 
 				std::vector<float> vertices = 
 				{
+					-0.5f,  0.5f,
 					-0.5f, -0.5f,
-					 0.0f,  0.5f,
-					 0.5f, -0.5f
+					 0.5f, -0.5f,
+					 0.5f,  0.5f
+				};
+
+				std::vector<unsigned int> indices = 
+				{
+					0, 1, 2,
+					2, 3, 0
 				};
 
 				unsigned int buffer;
@@ -57,8 +64,13 @@ int main(int argc, char** argv) {
 				GLCall(::glEnableVertexAttribArray(0));
 				GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
 
-				GLCall(::glBindBuffer(GL_ARRAY_BUFFER, 0));
+				unsigned int index_buffer;
 
+				GLCall(::glGenBuffers(1, &index_buffer));
+				GLCall(::glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer));
+				GLCall(::glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertices.size() * 2 * sizeof(unsigned int),
+					indices.data(), GL_STATIC_DRAW));
+				
 				shader_map shaders;
 				insert_shader(shaders, "res/shaders/test.vert", GL_VERTEX_SHADER);
 				insert_shader(shaders, "res/shaders/test.frag", GL_FRAGMENT_SHADER);
@@ -86,7 +98,8 @@ int main(int argc, char** argv) {
 					}
 					red += increment;
 					pShaderProgram->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
-					GLCall(::glDrawArrays(GL_TRIANGLES, 0, 3));
+					//GLCall(::glDrawArrays(GL_TRIANGLES, 0, 3));
+					GLCall(::glDrawElements(GL_TRIANGLES, 6 , GL_UNSIGNED_INT, 0));
 
 					/* Swap front and back buffers */
 					::glfwSwapBuffers(window);
