@@ -24,6 +24,11 @@ public:
 	bool CompileShaders(shader_map& shaders);
 	bool LinkProgram();
 	void UseProgram();
+
+	unsigned int GetUniformLocation(const std::string& name);
+
+	void SetUniform4f(unsigned int location, float f0, float f1, float f2, float f3);
+	void SetUniform4f(const std::string& name, float f0, float f1, float f2, float f3);
 };
 
 #endif // __SHADER_PROGRAM_H__

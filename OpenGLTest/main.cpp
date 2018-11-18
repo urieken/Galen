@@ -33,6 +33,7 @@ int main(int argc, char** argv) {
 		}
 		else {
 			LOG_INFO("WINDOW CREATED");
+			::glfwSwapInterval(1);
 			/* Make the window's context current */
 			::glfwMakeContextCurrent(window);
 
@@ -67,13 +68,24 @@ int main(int argc, char** argv) {
 					pShaderProgram->UseProgram();
 					shaders.clear();
 				}
-
+				
+				//pShaderProgram->SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
+				float red = 0.0f;
+				float increment = 0.01f;
 				/* Loop until the user closes the window */
 				while (!::glfwWindowShouldClose(window))
 				{
 					/* Render here */
 					GLCall(::glClear(GL_COLOR_BUFFER_BIT));
 
+					if (1.0f < red) {
+						increment = -0.01f;
+					}
+					else if (0.0f > red) {
+						increment = 0.01f;
+					}
+					red += increment;
+					pShaderProgram->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
 					GLCall(::glDrawArrays(GL_TRIANGLES, 0, 3));
 
 					/* Swap front and back buffers */

@@ -91,3 +91,19 @@ void ShaderProgram::UseProgram() {
 	LOG_SCOPE(__FUNCTION__);
 	GLCall(::glUseProgram(m_shaderProgram));
 }
+
+unsigned int ShaderProgram::GetUniformLocation(const std::string& name) {
+	unsigned int location{0};
+	GLCall(location = ::glGetUniformLocation(m_shaderProgram, name.c_str()));
+	if (-1 == location) {
+		LOG_WARNING("UNABLE TO LOCATE UNIFORM : %d", location);
+	}
+	return location;
+}
+
+void ShaderProgram::SetUniform4f(unsigned int location, float f0, float f1, float f2, float f3) {
+	::glUniform4f(location, f0, f1, f2, f3);
+}
+void ShaderProgram::SetUniform4f(const std::string& name, float f0, float f1, float f2, float f3) {
+	::glUniform4f(GetUniformLocation(name.c_str()), f0, f1, f2, f3);
+}

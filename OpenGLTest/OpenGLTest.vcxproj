@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
