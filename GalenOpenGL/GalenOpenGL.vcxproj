@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="galen_opengl.h" />
+    <ClInclude Include="header\galen_opengl.h" />
     <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\entry_point.h" />

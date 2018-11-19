@@ -6,6 +6,7 @@
 
 #include "application.h"
 #include "index_buffer.h"
+#include "vertex_array.h"
 #include "vertex_buffer.h"
 
 int main(int argc, char** argv) {
@@ -80,18 +81,19 @@ int main(int argc, char** argv) {
 						2, 3, 0
 					};
 
-					unsigned int vao;
-					GLCall(::glGenVertexArrays(1, &vao));
-					GLCall(::glBindVertexArray(vao));
+					std::unique_ptr<VertexArray> vertexArray{
+						std::make_unique<VertexArray>()
+					};
 
 					std::unique_ptr<VertexBuffer> vertexBuffer{
 						std::make_unique<VertexBuffer>(
 							reinterpret_cast<const void*>(vertices.data()), 
 							static_cast<unsigned int>(vertices.size() * sizeof(float)))};
 
-
-					GLCall(::glEnableVertexAttribArray(0));
-					GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
+					std::unique_ptr<VertexBufferLayout> layout{
+						std::make_unique<VertexBufferLayout>()};
+					layout->Push<float>(2);
+					vertexArray->AddBuffer(*vertexBuffer.get(), *layout.get());
 
 					std::unique_ptr<IndexBuffer> indexBuffer{
 						std::make_unique<IndexBuffer>(
@@ -104,17 +106,11 @@ int main(int argc, char** argv) {
 
 					std::unique_ptr<ShaderProgram> pShaderProgram{ std::make_unique<ShaderProgram>() };
 					if (pShaderProgram->CompileShaders(shaders) && pShaderProgram->LinkProgram()) {
-						pShaderProgram->UseProgram();
+						pShaderProgram->Bind();
 						shaders.clear();
 					}
-
-					//Texture texture{"res/images/opengl.png"};
-					//texture.Bind();
-					//pShaderProgram->SetUniform1i("u_Texture", 0);
-
-					//pShaderProgram->SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
-
-					pShaderProgram->UnuseProgram();
+					
+					pShaderProgram->UnBind();
 					GLCall(::glBindBuffer(GL_ARRAY_BUFFER, 0));
 					GLCall(::glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 
@@ -134,17 +130,12 @@ int main(int argc, char** argv) {
 						}
 						red += increment;
 
-						pShaderProgram->UseProgram();
+						pShaderProgram->Bind();
 						pShaderProgram->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
 						vertexBuffer->Bind();
-						//GLCall(::glBindBuffer(GL_ARRAY_BUFFER, buffer));
 
-
-
-						GLCall(::glBindVertexArray(vao));
+						vertexArray->Bind();
 						indexBuffer->Bind();
-						//GLCall(::glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer));
-						//GLCall(::glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
 
 						//GLCall(::glDrawArrays(GL_TRIANGLES, 0, 3));
 						GLCall(::glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));

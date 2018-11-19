@@ -23,8 +23,8 @@ public:
 	
 	bool CompileShaders(shader_map& shaders);
 	bool LinkProgram();
-	void UseProgram();
-	void UnuseProgram();
+	void Bind() const;
+	void UnBind() const;
 
 	unsigned int GetUniformLocation(const std::string& name);
 

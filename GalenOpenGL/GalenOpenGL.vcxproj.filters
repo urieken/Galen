@@ -24,10 +24,10 @@
     <ClInclude Include="header\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="galen_opengl.h">
+    <ClInclude Include="header\entry_point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\entry_point.h">
+    <ClInclude Include="header\galen_opengl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

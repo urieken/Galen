@@ -168,7 +168,9 @@
     <ClCompile Include="source\index_buffer.cpp" />
     <ClCompile Include="source\shader_program.cpp" />
     <ClCompile Include="source\texture.cpp" />
+    <ClCompile Include="source\vertex_array.cpp" />
     <ClCompile Include="source\vertex_buffer.cpp" />
+    <ClCompile Include="source\vertex_buffer_layout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -190,7 +192,9 @@
     <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\shader_program.h" />
     <ClInclude Include="header\texture.h" />
+    <ClInclude Include="header\vertex_array.h" />
     <ClInclude Include="header\vertex_buffer.h" />
+    <ClInclude Include="header\vertex_buffer_layout.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.frag" />

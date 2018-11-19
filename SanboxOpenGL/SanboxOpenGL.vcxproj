@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL;$(ProjDir)header</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL/header;$(ProjDir)header;$(SolutionDir)logger/logger</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GALEN_PLATFORM_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -105,7 +105,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL;$(ProjDir)header</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL/header;$(ProjDir)header;$(SolutionDir)logger/logger</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GALEN_PLATFORM_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -121,7 +121,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL;$(ProjDir)header</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL/header;$(ProjDir)header;$(SolutionDir)logger/logger</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GALEN_PLATFORM_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -141,7 +141,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL;$(ProjDir)header</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GalenOpenGL/header;$(ProjDir)header;$(SolutionDir)logger/logger</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GALEN_PLATFORM_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -160,6 +160,9 @@
   <ItemGroup>
     <ProjectReference Include="..\GalenOpenGL\GalenOpenGL.vcxproj">
       <Project>{5161f2fc-6e86-4374-b4b5-401322d6a568}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\logger\logger\logger.vcxproj">
+      <Project>{c53214b9-eee2-4416-abc0-92ae8571a62e}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

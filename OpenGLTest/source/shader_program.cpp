@@ -87,12 +87,12 @@ bool ShaderProgram::LinkProgram() {
 	return bSuccess;
 }
 
-void ShaderProgram::UseProgram() {
+void ShaderProgram::Bind() const{
 	//LOG_SCOPE(__FUNCTION__);
 	GLCall(::glUseProgram(m_shaderProgram));
 }
 
-void ShaderProgram::UnuseProgram() {
+void ShaderProgram::UnBind() const{
 	//LOG_SCOPE(__FUNCTION__);
 	GLCall(::glUseProgram(0));
 }
