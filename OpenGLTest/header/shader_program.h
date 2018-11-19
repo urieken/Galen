@@ -5,6 +5,7 @@
 
 #include <map>
 #include <vector>
+#include <unordered_map>
 
 typedef std::map<std::string, unsigned int> shader_map;
 template<typename T1, typename T2, typename T3>
@@ -15,7 +16,7 @@ constexpr auto insert_shader(T1& a, T2 b, T3 c) {
 class ShaderProgram {
 	unsigned int m_shaderProgram;
 	std::vector<unsigned int> m_shaderObjects;
-
+	std::unordered_map<std::string, int> m_uniforms;
 	bool LoadShaderSource(const std::string& filename, std::string& source);
 public:
 	ShaderProgram();

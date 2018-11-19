@@ -98,10 +98,16 @@ void ShaderProgram::UnBind() const{
 }
 
 unsigned int ShaderProgram::GetUniformLocation(const std::string& name) {
-	unsigned int location{0};
-	GLCall(location = ::glGetUniformLocation(m_shaderProgram, name.c_str()));
-	if (-1 == location) {
-		LOG_WARNING("UNABLE TO LOCATE UNIFORM : %d(%s)", location, name.c_str());
+	int location{0};
+	if (m_uniforms.find(name) != m_uniforms.end()) {
+		location = m_uniforms[name];
+	}
+	else {
+		GLCall(location = ::glGetUniformLocation(m_shaderProgram, name.c_str()));
+		if (-1 == location) {
+			LOG_WARNING("UNABLE TO LOCATE UNIFORM : %d(%s)", location, name.c_str());
+		}
+		m_uniforms[name] = location;
 	}
 	return location;
 }

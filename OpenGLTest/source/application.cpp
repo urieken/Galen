@@ -4,11 +4,13 @@
 
 Application::Application() 
 	: m_pWindow{ nullptr }
-	, m_pShaderProgram{ nullptr }
-	, m_pVertexArray{ nullptr }
-	, m_pVertexBuffer{ nullptr }
-	, m_pVertexBufferLayout{ nullptr }
-	, m_pIndexBuffer{ nullptr }
+	, m_pShader{ nullptr }
+	, m_pVA{ nullptr }
+	, m_pVB{ nullptr }
+	, m_pLayout{ nullptr }
+	, m_pIB{ nullptr }
+	, m_pRenderer{ nullptr }
+	, m_pTexture{ nullptr }
 {
 	LOG_SCOPE(__FUNCTION__);
 }
@@ -27,8 +29,13 @@ bool Application::CreateWindow()
 	m_pWindow = ::glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
 	if ((bSuccess = (nullptr != m_pWindow))) {
 		LOG_INFO("GLFW WINDOW CREATED");
+
 		::glfwMakeContextCurrent(m_pWindow);
 		::glfwSwapInterval(1);
+
+		GLCall(::glEnable(GL_BLEND));
+		GLCall(::glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
 		if ((bSuccess = (GLEW_OK == ::glewInit()))) {
 			LOG_INFO("GLEW INITIALIZED");
 		}
@@ -67,27 +74,28 @@ void Application::SetupBuffers() {
 	LOG_SCOPE(__FUNCTION__);
 
 	std::vector<float> vertices = {
-		-0.5f,  0.5f,
-		-0.5f, -0.5f,
-		 0.5f, -0.5f,
-		 0.5f,  0.5f
+		-0.5f,  0.5f, 0.0f, 1.0f,
+		-0.5f, -0.5f, 0.0f, 0.0f,
+		 0.5f, -0.5f, 1.0f, 0.0f,
+		 0.5f,  0.5f, 1.0f, 1.0f
 	};
 	std::vector<unsigned int> indices = {
 		0, 1, 2,
 		2, 3, 0
 	};
 
-	m_pVertexArray = std::make_unique<VertexArray>();
+	m_pVA = std::make_unique<VertexArray>();
 
-	m_pVertexBuffer = std::make_unique<VertexBuffer>(
+	m_pVB = std::make_unique<VertexBuffer>(
 		reinterpret_cast<const void*>(vertices.data()),
 		static_cast<unsigned int>(vertices.size() * sizeof(float)));
 
-	m_pVertexBufferLayout = std::make_unique<VertexBufferLayout>();
-	m_pVertexBufferLayout->Push<float>(2);
-	m_pVertexArray->AddBuffer(*m_pVertexBuffer.get(), *m_pVertexBufferLayout.get());
+	m_pLayout = std::make_unique<VertexBufferLayout>();
+	m_pLayout->Push<float>(2);
+	m_pLayout->Push<float>(2);
+	m_pVA->AddBuffer(*m_pVB.get(), *m_pLayout.get());
 
-	m_pIndexBuffer = std::make_unique<IndexBuffer>(
+	m_pIB = std::make_unique<IndexBuffer>(
 		reinterpret_cast<const unsigned int*>(indices.data()),
 		static_cast<unsigned int>(indices.size() * 2));
 
@@ -95,11 +103,22 @@ void Application::SetupBuffers() {
 	insert_shader(shaders, "res/shaders/test.vert", GL_VERTEX_SHADER);
 	insert_shader(shaders, "res/shaders/test.frag", GL_FRAGMENT_SHADER);
 
-	m_pShaderProgram = std::make_unique<ShaderProgram>();
-	if (m_pShaderProgram->CompileShaders(shaders) && m_pShaderProgram->LinkProgram()) {
-		m_pShaderProgram->Bind();
+	m_pShader = std::make_unique<ShaderProgram>();
+	if (m_pShader->CompileShaders(shaders) && m_pShader->LinkProgram()) {
+		m_pShader->Bind();
 		shaders.clear();
+
+		m_pTexture = std::make_unique<Texture>("res/images/cpp.png");
+		m_pTexture->Bind();
+		m_pShader->SetUniform1i("u_Texture", 0);
 	}
+
+	m_pVA->UnBind();
+	m_pVB->UnBind();
+	m_pIB->UnBind();
+	m_pShader->UnBind();
+
+	m_pRenderer = std::make_unique<Renderer>();
 }
 
 int Application::Run()
@@ -112,7 +131,7 @@ int Application::Run()
 	float increment{ 0.01f };
 
 	while (!::glfwWindowShouldClose(m_pWindow)) {
-		GLCall(::glClear(GL_COLOR_BUFFER_BIT));
+		m_pRenderer->Clear();
 
 		if (1.0f < red) {
 			increment = -0.01f;
@@ -122,17 +141,15 @@ int Application::Run()
 		}
 		red += increment;
 
-		m_pShaderProgram->Bind();
-		m_pShaderProgram->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
-		m_pVertexBuffer->Bind();
+		m_pShader->Bind();
+		m_pShader->SetUniform4f("u_Color", red, 0.3f, 0.8f, 1.0f);
+		
+		m_pRenderer->Draw(*m_pVA.get(), *m_pIB.get(), *m_pShader.get());
 
-		m_pVertexArray->Bind();
-		m_pIndexBuffer->Bind();
-
-		GLCall(::glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
 		::glfwSwapBuffers(m_pWindow);
 		::glfwPollEvents();
 	}
+	::GLClearError();
 	::glfwTerminate();
 	return nReturn;
 }
