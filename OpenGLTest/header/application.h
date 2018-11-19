@@ -8,6 +8,10 @@
 #include "vertex_buffer.h"
 #include "shader_program.h"
 
+#include "gtc/matrix_transform.hpp"
+
+#include "imgui.h"
+
 class Application {
 	GLFWwindow* m_pWindow;
 
@@ -19,7 +23,16 @@ class Application {
 	std::unique_ptr<Renderer>           m_pRenderer;
 	std::unique_ptr<Texture>            m_pTexture;
 
+	glm::mat4 m_proj;
+	glm::mat4 m_view;
+	glm::mat4 m_model;
+
 	bool CreateWindow();
+	void InitializeImGui();
+	void CreateImGuiFrame();
+	void DrawImGui(glm::vec3& trans_a, glm::vec3& trans_b, ImVec4& clear_color);
+	void RenderImGui();
+	void DestroyImGui();
 
 public:
 	Application();

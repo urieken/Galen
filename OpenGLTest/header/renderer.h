@@ -6,10 +6,12 @@
 #include "shader_program.h"
 
 class Renderer {
+
 public:
 	Renderer();
 	virtual ~Renderer();
 
+	void SetClearColor(float r, float g, float b, float a);
 	void Clear() const;
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const ShaderProgram& shader) const;
 };
