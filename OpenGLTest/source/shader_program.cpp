@@ -3,6 +3,8 @@
 #include <fstream>
 #include <streambuf>
 
+#include "gtc/matrix_transform.hpp"
+
 ShaderProgram::ShaderProgram()
 	: m_shaderProgram{ 0 }
 {
@@ -112,18 +114,29 @@ unsigned int ShaderProgram::GetUniformLocation(const std::string& name) {
 	return location;
 }
 
-void ShaderProgram::SetUniform1i(unsigned int location, int i0) {
-	::glUniform1i(location, i0);
+void ShaderProgram::SetUniform1i(int location, int i0) {
+	GLCall(::glUniform1i(location, i0));
 }
 
 void ShaderProgram::SetUniform1i(const std::string& name, int i0) {
-	::glUniform1i(GetUniformLocation(name.c_str()), i0);
+	GLCall(::glUniform1i(GetUniformLocation(name.c_str()), i0));
 }
 
-void ShaderProgram::SetUniform4f(unsigned int location, float f0, float f1, float f2, float f3) {
-	::glUniform4f(location, f0, f1, f2, f3);
+void ShaderProgram::SetUniform4f(int location, float f0, float f1, float f2, float f3) {
+	GLCall(::glUniform4f(location, f0, f1, f2, f3));
 }
 
 void ShaderProgram::SetUniform4f(const std::string& name, float f0, float f1, float f2, float f3) {
-	::glUniform4f(GetUniformLocation(name.c_str()), f0, f1, f2, f3);
+	GLCall(::glUniform4f(GetUniformLocation(name.c_str()), f0, f1, f2, f3));
 }
+
+void ShaderProgram::SetUniformMat4f(int location, const float* pValue)
+{
+	GLCall(::glUniformMatrix4fv(location, 1, GL_FALSE, pValue));
+}
+
+void ShaderProgram::SetUniformMat4f(const std::string& name, const float* pValue)
+{
+	GLCall(::glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, pValue));
+}
+

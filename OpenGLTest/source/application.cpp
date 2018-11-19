@@ -2,6 +2,8 @@
 
 #include "logger.h"
 
+#include "gtc/matrix_transform.hpp"
+
 Application::Application() 
 	: m_pWindow{ nullptr }
 	, m_pShader{ nullptr }
@@ -103,6 +105,8 @@ void Application::SetupBuffers() {
 	insert_shader(shaders, "res/shaders/test.vert", GL_VERTEX_SHADER);
 	insert_shader(shaders, "res/shaders/test.frag", GL_FRAGMENT_SHADER);
 
+	glm::mat4 proj{ glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f )};
+
 	m_pShader = std::make_unique<ShaderProgram>();
 	if (m_pShader->CompileShaders(shaders) && m_pShader->LinkProgram()) {
 		m_pShader->Bind();
@@ -111,6 +115,7 @@ void Application::SetupBuffers() {
 		m_pTexture = std::make_unique<Texture>("res/images/cpp.png");
 		m_pTexture->Bind();
 		m_pShader->SetUniform1i("u_Texture", 0);
+		m_pShader->SetUniformMat4f("u_MVP", &proj[0][0]);
 	}
 
 	m_pVA->UnBind();
