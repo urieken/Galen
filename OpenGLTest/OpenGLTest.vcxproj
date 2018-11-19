@@ -163,9 +163,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\application.cpp" />
     <ClCompile Include="source\core.cpp" />
+    <ClCompile Include="source\index_buffer.cpp" />
     <ClCompile Include="source\shader_program.cpp" />
     <ClCompile Include="source\texture.cpp" />
+    <ClCompile Include="source\vertex_buffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -174,14 +177,20 @@
     <ProjectReference Include="..\vendors\glew\build\vc15\glew_static.vcxproj">
       <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\vendors\glm\build\glm\glm_static.vcxproj">
+      <Project>{8255aacf-6ef9-3888-a26b-f2d9218875d7}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\vendors\stb_image\stb_image.vcxproj">
-      <Project>{76bd1785-6b48-42fe-911b-6f4ad7654ea5}</Project>
+      <Project>{3542a11f-4c75-457e-aeb8-cf0aa2b52bd7}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
+    <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\shader_program.h" />
     <ClInclude Include="header\texture.h" />
+    <ClInclude Include="header\vertex_buffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.frag" />
