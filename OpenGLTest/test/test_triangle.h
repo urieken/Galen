@@ -20,6 +20,8 @@ namespace Test {
 		std::unique_ptr<ShaderProgram>        m_pShader;
 		std::unique_ptr<Renderer>             m_pRenderer;
 
+		bool                                  m_bWireFrame;
+
 		void SetupRenderer();
 		void SetupShaders();
 		void SetupIndexBuffer();

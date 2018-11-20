@@ -127,6 +127,7 @@ int Application::Run()
 	while (!::glfwWindowShouldClose(m_pWindow)) {			
 		pRenderer->Clear();
 		CreateImGuiFrame();
+		ImGui::SetNextWindowBgAlpha(0.5f);
 
 		if (nullptr != pCurrentTest) {
 			pCurrentTest->OnUpdate(0.0f);

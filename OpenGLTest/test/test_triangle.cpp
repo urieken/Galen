@@ -26,7 +26,8 @@ namespace Test {
 	{
 		LOG_SCOPE(__FUNCTION__);
 		std::vector<unsigned int> indices = {
-			0, 1, 2
+			0, 1, 2,
+			0, 2, 3
 		};
 		m_pIB = std::make_unique<IndexBuffer>(
 			reinterpret_cast<const unsigned int*>(indices.data()),
@@ -46,7 +47,8 @@ namespace Test {
 		std::vector<float> vertices = {
 			-0.5f, -0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 		m_pVB = std::make_unique<VertexBuffer>(
 			reinterpret_cast<const void*>(vertices.data()),
@@ -78,6 +80,7 @@ namespace Test {
 		, m_pIB{ nullptr }
 		, m_pShader{ nullptr }
 		, m_pRenderer{ nullptr }
+		, m_bWireFrame{ false }
 	{
 		LOG_SCOPE(__FUNCTION__);
 		SetupBuffers();
@@ -90,7 +93,7 @@ namespace Test {
 
 	void TestTriangle::OnUpdate(float delta_time)
 	{
-
+		m_pRenderer->SetPolygonMode(GL_FRONT_AND_BACK, m_bWireFrame ? GL_LINE : GL_FILL);
 	}
 
 	void TestTriangle::OnRender()
@@ -101,6 +104,7 @@ namespace Test {
 
 	void TestTriangle::OnImGuiRender()
 	{
+		ImGui::Checkbox("WIREFRAME", &m_bWireFrame);
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
 			1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}

@@ -10,6 +10,11 @@ Renderer::~Renderer()
 
 }
 
+void Renderer::SetPolygonMode(unsigned int face, unsigned int mode)
+{
+	GLCall(::glPolygonMode(face, mode));
+}
+
 void Renderer::SetClearColor(float r, float g, float b, float a)
 {
 	GLCall(::glClearColor(r, g, b, a));

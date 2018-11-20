@@ -8,4 +8,5 @@
 *.user
 /vendors/*
 /logger
+/OpenGLTest/imgui.ini
 
