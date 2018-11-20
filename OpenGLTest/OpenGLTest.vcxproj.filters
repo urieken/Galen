@@ -75,6 +75,9 @@
     <ClCompile Include="test\test_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test\test_triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\core.h">
@@ -140,10 +143,15 @@
     <ClInclude Include="test\test_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="test\test_triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.vert" />
     <None Include="res\shaders\test.frag" />
+    <None Include="res\shaders\hello_triangle.vert" />
+    <None Include="res\shaders\hello_triangle.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\cpp.png">

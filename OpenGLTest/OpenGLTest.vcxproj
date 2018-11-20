@@ -182,6 +182,7 @@
     <ClCompile Include="test\test_clear_color.cpp" />
     <ClCompile Include="test\test_menu.cpp" />
     <ClCompile Include="test\test_texture.cpp" />
+    <ClCompile Include="test\test_triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -216,8 +217,11 @@
     <ClInclude Include="test\test_clear_color.h" />
     <ClInclude Include="test\test_menu.h" />
     <ClInclude Include="test\test_texture.h" />
+    <ClInclude Include="test\test_triangle.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\hello_triangle.frag" />
+    <None Include="res\shaders\hello_triangle.vert" />
     <None Include="res\shaders\test.frag" />
     <None Include="res\shaders\test.vert" />
   </ItemGroup>

@@ -9,6 +9,7 @@
 
 #include "../test/test_menu.h"
 #include "../test/test_texture.h"
+#include "../test/test_triangle.h"
 #include "../test/test_clear_color.h"
 
 Application::Application() 
@@ -119,6 +120,8 @@ int Application::Run()
 
 	pTestMenu->RegisterTest<Test::TestClearColor>("CLEAR COLOR TEST");
 	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST");
+	pTestMenu->RegisterTest<Test::TestTriangle>("TRIANGLE TEST");
+
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	while (!::glfwWindowShouldClose(m_pWindow)) {			
