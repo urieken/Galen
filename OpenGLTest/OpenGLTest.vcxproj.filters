@@ -63,6 +63,18 @@
     <ClCompile Include="..\vendors\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test\test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_clear_color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\core.h">
@@ -114,6 +126,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\vendors\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_clear_color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

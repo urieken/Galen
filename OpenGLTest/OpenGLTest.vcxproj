@@ -178,6 +178,10 @@
     <ClCompile Include="source\vertex_array.cpp" />
     <ClCompile Include="source\vertex_buffer.cpp" />
     <ClCompile Include="source\vertex_buffer_layout.cpp" />
+    <ClCompile Include="test\test.cpp" />
+    <ClCompile Include="test\test_clear_color.cpp" />
+    <ClCompile Include="test\test_menu.cpp" />
+    <ClCompile Include="test\test_texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -208,6 +212,10 @@
     <ClInclude Include="header\vertex_array.h" />
     <ClInclude Include="header\vertex_buffer.h" />
     <ClInclude Include="header\vertex_buffer_layout.h" />
+    <ClInclude Include="test\test.h" />
+    <ClInclude Include="test\test_clear_color.h" />
+    <ClInclude Include="test\test_menu.h" />
+    <ClInclude Include="test\test_texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.frag" />

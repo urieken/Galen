@@ -12,7 +12,6 @@ int main(int argc, char** argv) {
 	std::unique_ptr<Application> pApplication{ std::make_unique<Application>() };
 	if (nullptr != pApplication) {
 		if (pApplication->Initialize())
-			pApplication->SetupBuffers();
 			nReturn = pApplication->Run();
 	}
 	else { LOG_FATAL("FAILED TO CREATE APPLICATION OBJECT"); }
