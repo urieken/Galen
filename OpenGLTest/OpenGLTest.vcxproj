@@ -181,10 +181,10 @@
     <ClCompile Include="test\test.cpp" />
     <ClCompile Include="test\test_clear_color.cpp" />
     <ClCompile Include="test\test_menu.cpp" />
+    <ClCompile Include="test\test_polygon_01_01.cpp" />
     <ClCompile Include="test\test_texture.cpp" />
     <ClCompile Include="test\test_triangle_01_01.cpp" />
     <ClCompile Include="test\test_triangle_01_02.cpp" />
-    <ClCompile Include="test\test_triangle_01_03.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -208,6 +208,7 @@
     <ClInclude Include="..\vendors\imgui\imstb_truetype.h" />
     <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
+    <ClInclude Include="test\test_polygon_01_01.h" />
     <ClInclude Include="test\test_triangle_01_03.h" />
     <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\renderer.h" />
@@ -229,6 +230,8 @@
     <None Include="res\shaders\hello_triangle_01_03.frag" />
     <None Include="res\shaders\test.frag" />
     <None Include="res\shaders\test.vert" />
+    <None Include="res\shaders\test_polygon_01_01.frag" />
+    <None Include="res\shaders\test_polygon_01_01.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\cpp.png" />

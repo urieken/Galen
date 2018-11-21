@@ -12,7 +12,9 @@
 #include "../test/test_clear_color.h"
 #include "../test/test_triangle_01_01.h"
 #include "../test/test_triangle_01_02.h"
-#include "../test/test_triangle_01_03.h"
+
+#include "../test/test_polygon_01_01.h"
+
 
 Application::Application() 
 	: m_pWindow{ nullptr }
@@ -125,7 +127,8 @@ int Application::Run()
 	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST");
 	pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE");
 	pTestMenu->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01");
-	pTestMenu->RegisterTest<Test::TestTriangle_01_03>("TRIANGLE TEST 01 EX 03");
+
+	pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE");
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
