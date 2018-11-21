@@ -6,10 +6,13 @@
 #include "shader_program.h"
 
 class Renderer {
-
+	unsigned int m_drawingMode;
 public:
 	Renderer();
 	virtual ~Renderer();
+
+	const unsigned int GetDrawingMode() const;
+	void SetDrawingMode(const unsigned int drawingMode);
 
 	void SetPolygonMode(unsigned int face, unsigned int mode);
 	void SetClearColor(float r, float g, float b, float a);

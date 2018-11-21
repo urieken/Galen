@@ -12,7 +12,7 @@
 
 
 namespace Test {
-	class TestTriangle : public TestBase {
+	class TestTriangle_01_01 : public TestBase {
 		std::unique_ptr<VertexArray>          m_pVA;
 		std::unique_ptr<VertexBuffer>         m_pVB;
 		std::unique_ptr<VertexBufferLayout>   m_pLayout;
@@ -30,8 +30,8 @@ namespace Test {
 		void SetupBuffers();
 
 	public:
-		TestTriangle();
-		virtual ~TestTriangle();
+		TestTriangle_01_01();
+		virtual ~TestTriangle_01_01();
 
 		void OnUpdate(float delta_time) override;
 		void OnRender() override;

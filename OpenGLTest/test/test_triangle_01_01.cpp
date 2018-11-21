@@ -4,13 +4,13 @@
 
 namespace Test {
 
-	void TestTriangle::SetupRenderer()
+	void TestTriangle_01_01::SetupRenderer()
 	{
 		m_pRenderer = std::make_unique<Renderer>();
 		m_pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	}
 
-	void TestTriangle::SetupShaders()
+	void TestTriangle_01_01::SetupShaders()
 	{
 		shader_map shaders;
 		insert_shader(shaders, "res/shaders/hello_triangle.vert", GL_VERTEX_SHADER);
@@ -22,40 +22,38 @@ namespace Test {
 		}
 	}
 
-	void TestTriangle::SetupIndexBuffer()
+	void TestTriangle_01_01::SetupIndexBuffer()
 	{
 		LOG_SCOPE(__FUNCTION__);
 		std::vector<unsigned int> indices = {
-			0, 1, 2,
-			0, 2, 3
+			0, 1, 2
 		};
 		m_pIB = std::make_unique<IndexBuffer>(
 			reinterpret_cast<const unsigned int*>(indices.data()),
 			static_cast<unsigned int>(indices.size() * 2));
 	}
 
-	void TestTriangle::SetupLayout() 
+	void TestTriangle_01_01::SetupLayout() 
 	{
 		LOG_SCOPE(__FUNCTION__);
 		m_pLayout = std::make_unique<VertexBufferLayout>();
 		m_pLayout->Push<float>(3);
 	}
 
-	void TestTriangle::SetupVertexBuffer()
+	void TestTriangle_01_01::SetupVertexBuffer()
 	{
 		LOG_SCOPE(__FUNCTION__);
 		std::vector<float> vertices = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, // 0
+			 0.5f, -0.5f, 0.0f, // 1
+			 0.0f,  0.5f, 0.0f  // 2
 		};
 		m_pVB = std::make_unique<VertexBuffer>(
 			reinterpret_cast<const void*>(vertices.data()),
 			static_cast<unsigned int>(vertices.size() * sizeof(float)));
 	}
 
-	void TestTriangle::SetupBuffers()
+	void TestTriangle_01_01::SetupBuffers()
 	{
 		LOG_SCOPE(__FUNCTION__);
 		m_pVA = std::make_unique<VertexArray>();
@@ -73,7 +71,7 @@ namespace Test {
 		SetupRenderer();
 	}
 
-	TestTriangle::TestTriangle()
+	TestTriangle_01_01::TestTriangle_01_01()
 		: m_pVA{ nullptr }
 		, m_pVB{ nullptr }
 		, m_pLayout{ nullptr }
@@ -86,23 +84,23 @@ namespace Test {
 		SetupBuffers();
 	}
 
-	TestTriangle::~TestTriangle()
+	TestTriangle_01_01::~TestTriangle_01_01()
 	{
 
 	}
 
-	void TestTriangle::OnUpdate(float delta_time)
+	void TestTriangle_01_01::OnUpdate(float delta_time)
 	{
 		m_pRenderer->SetPolygonMode(GL_FRONT_AND_BACK, m_bWireFrame ? GL_LINE : GL_FILL);
 	}
 
-	void TestTriangle::OnRender()
+	void TestTriangle_01_01::OnRender()
 	{
 		m_pRenderer->Clear();
 		m_pRenderer->Draw(*m_pVA, *m_pIB, *m_pShader);
 	}
 
-	void TestTriangle::OnImGuiRender()
+	void TestTriangle_01_01::OnImGuiRender()
 	{
 		ImGui::Checkbox("WIREFRAME", &m_bWireFrame);
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",

@@ -1,6 +1,7 @@
 #include "renderer.h"
 
 Renderer::Renderer()
+	: m_drawingMode{GL_TRIANGLES}
 {
 
 }
@@ -8,6 +9,16 @@ Renderer::Renderer()
 Renderer::~Renderer()
 {
 
+}
+
+const unsigned int Renderer::GetDrawingMode() const
+{
+	return m_drawingMode;
+}
+
+void Renderer::SetDrawingMode(const unsigned int drawingMode)
+{
+	m_drawingMode = drawingMode;
 }
 
 void Renderer::SetPolygonMode(unsigned int face, unsigned int mode)
@@ -30,5 +41,5 @@ void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const ShaderPr
 	va.Bind();
 	ib.Bind();
 	shader.Bind();
-	GLCall(::glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
+	GLCall(::glDrawElements(m_drawingMode, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }

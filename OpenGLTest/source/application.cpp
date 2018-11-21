@@ -120,7 +120,7 @@ int Application::Run()
 
 	pTestMenu->RegisterTest<Test::TestClearColor>("CLEAR COLOR TEST");
 	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST");
-	pTestMenu->RegisterTest<Test::TestTriangle>("TRIANGLE TEST");
+	pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST");
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);

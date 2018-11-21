@@ -2,7 +2,6 @@
 
 #include "gtc/matrix_transform.hpp"
 
-
 namespace Test {
 
 	void TestTexture::SetupBuffers()
