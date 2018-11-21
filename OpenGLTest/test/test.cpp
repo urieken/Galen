@@ -12,6 +12,11 @@ namespace Test
 	{
 	
 	}
+
+	void TestBase::OnInitialize()
+	{
+		LOG_SCOPE(__FUNCTION__);
+	}
 	
 	void TestBase::OnUpdate(float delta_time)
 	{

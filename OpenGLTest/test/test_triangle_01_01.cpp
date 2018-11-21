@@ -1,4 +1,4 @@
-#include "test_triangle.h"
+#include "test_triangle_01_01.h"
 
 #include "imgui.h"
 
@@ -22,17 +22,6 @@ namespace Test {
 		}
 	}
 
-	void TestTriangle_01_01::SetupIndexBuffer()
-	{
-		LOG_SCOPE(__FUNCTION__);
-		std::vector<unsigned int> indices = {
-			0, 1, 2
-		};
-		m_pIB = std::make_unique<IndexBuffer>(
-			reinterpret_cast<const unsigned int*>(indices.data()),
-			static_cast<unsigned int>(indices.size() * 2));
-	}
-
 	void TestTriangle_01_01::SetupLayout() 
 	{
 		LOG_SCOPE(__FUNCTION__);
@@ -46,11 +35,15 @@ namespace Test {
 		std::vector<float> vertices = {
 			-0.5f, -0.5f, 0.0f, // 0
 			 0.5f, -0.5f, 0.0f, // 1
-			 0.0f,  0.5f, 0.0f  // 2
+			 0.5f,  0.5f, 0.0f, // 2
+			-0.5f,  0.5f, 0.0f, // 3
+			 0.5f,  0.5f, 0.0f, // 4
+			-0.5f, -0.5f, 0.0f  // 5
 		};
 		m_pVB = std::make_unique<VertexBuffer>(
 			reinterpret_cast<const void*>(vertices.data()),
 			static_cast<unsigned int>(vertices.size() * sizeof(float)));
+		m_pVB->SetVertexCount(6);
 	}
 
 	void TestTriangle_01_01::SetupBuffers()
@@ -60,12 +53,10 @@ namespace Test {
 		SetupVertexBuffer();
 		SetupLayout();
 		m_pVA->AddBuffer(*m_pVB, *m_pLayout);
-		SetupIndexBuffer();
 		SetupShaders();
 
 		m_pVA->UnBind();
 		m_pVB->UnBind();
-		m_pIB->UnBind();
 		m_pShader->UnBind();
 
 		SetupRenderer();
@@ -75,18 +66,22 @@ namespace Test {
 		: m_pVA{ nullptr }
 		, m_pVB{ nullptr }
 		, m_pLayout{ nullptr }
-		, m_pIB{ nullptr }
 		, m_pShader{ nullptr }
 		, m_pRenderer{ nullptr }
 		, m_bWireFrame{ false }
 	{
 		LOG_SCOPE(__FUNCTION__);
-		SetupBuffers();
+		//SetupBuffers();
 	}
 
 	TestTriangle_01_01::~TestTriangle_01_01()
 	{
+		m_pRenderer->SetPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
+	void TestTriangle_01_01::OnInitialize()
+	{
+		SetupBuffers();
 	}
 
 	void TestTriangle_01_01::OnUpdate(float delta_time)
@@ -97,7 +92,8 @@ namespace Test {
 	void TestTriangle_01_01::OnRender()
 	{
 		m_pRenderer->Clear();
-		m_pRenderer->Draw(*m_pVA, *m_pIB, *m_pShader);
+		//m_pRenderer->Draw(*m_pVA, *m_pIB, *m_pShader);
+		m_pRenderer->Draw(*m_pVA, *m_pVB, *m_pShader);
 	}
 
 	void TestTriangle_01_01::OnImGuiRender()

@@ -43,3 +43,10 @@ void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const ShaderPr
 	shader.Bind();
 	GLCall(::glDrawElements(m_drawingMode, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
+
+void Renderer::Draw(const VertexArray& va, const VertexBuffer& vb, ShaderProgram& shader) const
+{
+	va.Bind();
+	shader.Bind();
+	GLCall(::glDrawArrays(m_drawingMode, 0, vb.GetVertexCount()));
+}

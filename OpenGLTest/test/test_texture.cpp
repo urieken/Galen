@@ -76,12 +76,17 @@ namespace Test {
 		, m_clear_color{ 0.45f, 0.55f, 0.60f, 1.00f }
 	{
 		LOG_SCOPE(__FUNCTION__);
-		SetupBuffers();
 	}
 
 	TestTexture::~TestTexture()
 	{
 		LOG_SCOPE(__FUNCTION__);
+	}
+
+	void TestTexture::OnInitialize()
+	{
+		LOG_SCOPE(__FUNCTION__);
+		SetupBuffers();
 	}
 
 	void TestTexture::OnUpdate(float delta_time)

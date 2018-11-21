@@ -15,6 +15,7 @@ namespace Test{
 		for (std::pair<std::string, std::function<TestBase*()>>& test : m_tests) {
 			if (ImGui::Button(test.first.c_str())) {
 				m_pCurrentTest = test.second();
+				m_pCurrentTest->OnInitialize();
 			}
 		}
 	}

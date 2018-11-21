@@ -18,6 +18,7 @@ public:
 	void SetClearColor(float r, float g, float b, float a);
 	void Clear() const;
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const ShaderProgram& shader) const;
+	void Draw(const VertexArray& va, const VertexBuffer& vb,  ShaderProgram& shader) const;
 };
 
 #endif //__RENDERER_H__

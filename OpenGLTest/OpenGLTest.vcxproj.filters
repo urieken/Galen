@@ -75,7 +75,13 @@
     <ClCompile Include="test\test_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_triangle.cpp">
+    <ClCompile Include="test\test_triangle_01_01.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_triangle_01_02.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_triangle_01_03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,7 +149,13 @@
     <ClInclude Include="test\test_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test\test_triangle.h">
+    <ClInclude Include="test\test_triangle_01_01.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_triangle_01_02.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_triangle_01_03.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,6 +164,7 @@
     <None Include="res\shaders\test.frag" />
     <None Include="res\shaders\hello_triangle.vert" />
     <None Include="res\shaders\hello_triangle.frag" />
+    <None Include="res\shaders\hello_triangle_01_03.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\cpp.png">
