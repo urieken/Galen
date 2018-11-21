@@ -2,7 +2,6 @@
 #define __VERTEX_BUFFER_LAYOUT_H__
 
 #include "core.h"
-
 #include <vector>
 
 struct VertexBufferElement {
@@ -20,6 +19,27 @@ struct VertexBufferElement {
 		return size;
 	}
 };
+
+
+typedef struct _vertexBufferElement {
+	GLenum Type;
+	GLuint Count;
+	GLboolean Normalized;
+	static GLuint SizeOf(GLenum type) {
+		GLuint size{ 0 };
+		switch (type)
+		{
+		case GL_FLOAT: {size = sizeof GLfloat; }break;
+		case GL_UNSIGNED_INT: {size = sizeof GLuint; }break;
+		case GL_BYTE: {size = sizeof GLbyte; }break;
+		case GL_UNSIGNED_BYTE: {size = sizeof GLubyte; }break;
+		default: {
+			ASSERT(false);
+		}break;
+		}
+	}
+}VertexBufferElement_T;
+
 
 class VertexBufferLayout {
 	std::vector<VertexBufferElement> m_elements;

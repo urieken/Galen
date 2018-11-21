@@ -28,7 +28,7 @@ namespace Test {
 		m_pLayout = std::make_unique<VertexBufferLayout>();
 		m_pLayout->Push<float>(2);
 		m_pLayout->Push<float>(2);
-		m_pVA->AddBuffer(*m_pVB.get(), *m_pLayout.get());
+		m_pVA->AddBuffer(0, *m_pVB.get(), *m_pLayout.get());
 
 		m_pIB = std::make_unique<IndexBuffer>(
 			reinterpret_cast<const unsigned int*>(indices.data()),
