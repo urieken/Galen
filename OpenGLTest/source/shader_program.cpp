@@ -99,7 +99,14 @@ void ShaderProgram::UnBind() const{
 	GLCall(::glUseProgram(0));
 }
 
-unsigned int ShaderProgram::GetUniformLocation(const std::string& name) {
+int ShaderProgram::GetAttributiteLocation(const std::string& name)
+{
+	int location{ 0 };
+	GLCall(location = ::glGetAttribLocation(m_shaderProgram, name.c_str()));
+	return location;
+}
+
+int ShaderProgram::GetUniformLocation(const std::string& name) {
 	int location{0};
 	if (m_uniforms.find(name) != m_uniforms.end()) {
 		location = m_uniforms[name];
@@ -130,6 +137,14 @@ void ShaderProgram::SetUniform1f(const std::string& name, float f0) {
 	GLCall(::glUniform1f(GetUniformLocation(name.c_str()), f0));
 }
 
+void ShaderProgram::SetUniform3f(int location, float f0, float f1, float f2) {
+	GLCall(::glUniform3f(location, f0, f1, f2));
+}
+
+void ShaderProgram::SetUniform3f(const std::string& name, float f0, float f1, float f2) {
+	GLCall(::glUniform3f(GetUniformLocation(name.c_str()), f0, f1, f2));
+}
+
 void ShaderProgram::SetUniform4f(int location, float f0, float f1, float f2, float f3) {
 	GLCall(::glUniform4f(location, f0, f1, f2, f3));
 }
@@ -138,13 +153,23 @@ void ShaderProgram::SetUniform4f(const std::string& name, float f0, float f1, fl
 	GLCall(::glUniform4f(GetUniformLocation(name.c_str()), f0, f1, f2, f3));
 }
 
-void ShaderProgram::SetUniformMat4f(int location, const float* pValue)
+void ShaderProgram::SetUniformMat4f(int location, const float* pData)
 {
-	GLCall(::glUniformMatrix4fv(location, 1, GL_FALSE, pValue));
+	GLCall(::glUniformMatrix4fv(location, 1, GL_FALSE, pData));
 }
 
-void ShaderProgram::SetUniformMat4f(const std::string& name, const float* pValue)
+void ShaderProgram::SetUniformMat4f(const std::string& name, const float* pData)
 {
-	GLCall(::glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, pValue));
+	GLCall(::glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, pData));
+}
+
+void ShaderProgram::SetUniform3fv(int location, const float* pData)
+{
+	GLCall(::glUniform3fv(location, 1, pData));
+}
+
+void ShaderProgram::SetUniform3fv(const std::string& name, const float* pData)
+{
+	GLCall(::glUniform3fv(GetUniformLocation(name), 1, pData));
 }
 

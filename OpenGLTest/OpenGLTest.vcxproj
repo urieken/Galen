@@ -236,6 +236,7 @@
     <None Include="res\shaders\test_polygon_01_01.frag" />
     <None Include="res\shaders\test_polygon_01_01.vert" />
     <None Include="res\shaders\test_polygon_01_02.frag" />
+    <None Include="res\shaders\test_polygon_01_02.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\cpp.png" />

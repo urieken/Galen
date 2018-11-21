@@ -1,5 +1,8 @@
 #include "test_polygon_01_02.h"
 
+#include "glm.hpp"
+#include "gtc/type_ptr.hpp"
+
 namespace Test {
 
 	void TestPolygon_01_02::SetupShaders()
@@ -47,7 +50,9 @@ namespace Test {
 		std::chrono::time_point<std::chrono::steady_clock> timeNow{
 			std::chrono::high_resolution_clock::now() };
 		float time{ std::chrono::duration_cast<std::chrono::duration<float>>(timeNow - m_timeStart).count() };
-		LOG_INFO("TIME : %f", (std::sinf(time * 4.0f) + 1.0f) / 2.0f);
-		m_pShaders->SetUniform1f("u_Color", (std::sinf(time * 4.0f) + 1.0f) / 2.0f);
+
+		glm::vec3 color{ (std::sinf(time  * 4.0f) + 1.0f) /2.0f, 0.0f, 0.0f };
+		m_pShaders->Bind();
+		m_pShaders->SetUniform3fv("u_Color", glm::value_ptr(color));
 	}
 }

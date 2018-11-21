@@ -18,7 +18,8 @@ bool GLLogCall(const char* function, const char* file, int line) {
 		case GL_OUT_OF_MEMORY: errorString = "GL_OUT_OF_MEMORY"; break;
 		case GL_INVALID_FRAMEBUFFER_OPERATION: errorString = "GL_INVALID_FRAMEBUFFER_OPERATION"; break;
 		}
-		LOG_ERROR("OpenGL Error : %d(0x%xH)[%s] : %s : %s : %d ", error, error, function, file, line);
+		LOG_ERROR("OpenGL Error : %d(0x%xH) [%s] : %s : %s : %d ", 
+			error, error, errorString.c_str(), function, file, line);
 		return false;
 	}
 	return true;
