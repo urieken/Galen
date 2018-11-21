@@ -87,6 +87,9 @@
     <ClCompile Include="test\test_polygon_01_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test\test_polygon_01_03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\core.h">
@@ -170,6 +173,12 @@
     <ClInclude Include="test\test_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="test\test_polygon_01_03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\debugbreak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.vert" />
@@ -181,6 +190,8 @@
     <None Include="res\shaders\test_polygon_01_01.vert" />
     <None Include="res\shaders\test_polygon_01_02.frag" />
     <None Include="res\shaders\test_polygon_01_02.vert" />
+    <None Include="res\shaders\test_polygon_01_03.frag" />
+    <None Include="res\shaders\test_polygon_01_03.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\cpp.png">

@@ -10,5 +10,6 @@
 
 #include "test_polygon_01_01.h"
 #include "test_polygon_01_02.h"
+#include "test_polygon_01_03.h"
 
 #endif // __TEST_LIST_H__

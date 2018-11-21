@@ -1,5 +1,6 @@
 #include "core.h"
 #include "string"
+#include "logger.h"
 
 void GLClearError() {
 	while (::glGetError() != GL_NO_ERROR);

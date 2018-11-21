@@ -124,6 +124,7 @@ int Application::Run()
 
 	pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE        ");
 	pTestMenu->RegisterTest<Test::TestPolygon_01_02>("POLYGON TEST 01 EX 01 SHADER");
+	pTestMenu->RegisterTest<Test::TestPolygon_01_03>("POLYGON TEST 01 EX 03 COLORS");
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
