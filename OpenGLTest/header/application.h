@@ -5,7 +5,7 @@
 
 class Application {
 	GLFWwindow* m_pWindow;
-
+	
 	bool CreateWindow();
 	void InitializeImGui();
 	void CreateImGuiFrame();

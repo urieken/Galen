@@ -7,13 +7,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include "../test/test_menu.h"
-#include "../test/test_texture.h"
-#include "../test/test_clear_color.h"
-#include "../test/test_triangle_01_01.h"
-#include "../test/test_triangle_01_02.h"
-
-#include "../test/test_polygon_01_01.h"
+#include "../test/test_list.h"
 
 
 Application::Application() 
@@ -123,16 +117,17 @@ int Application::Run()
 	Test::TestMenu* pTestMenu = new Test::TestMenu(pCurrentTest);
 	pCurrentTest = pTestMenu;
 
-	pTestMenu->RegisterTest<Test::TestClearColor>("CLEAR COLOR TEST");
-	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST");
-	pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE");
-	pTestMenu->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01");
+	pTestMenu->RegisterTest<Test::TestClearColor>("CLEAR COLOR TEST            ");
+	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST                ");
+	pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE       ");
+	pTestMenu->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01      ");
 
-	pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE");
+	pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE        ");
+	pTestMenu->RegisterTest<Test::TestPolygon_01_02>("POLYGON TEST 01 EX 01 SHADER");
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	while (!::glfwWindowShouldClose(m_pWindow)) {			
+	while (!::glfwWindowShouldClose(m_pWindow)) {	
 		pRenderer->Clear();
 		CreateImGuiFrame();
 		ImGui::SetNextWindowBgAlpha(0.5f);

@@ -122,6 +122,14 @@ void ShaderProgram::SetUniform1i(const std::string& name, int i0) {
 	GLCall(::glUniform1i(GetUniformLocation(name.c_str()), i0));
 }
 
+void ShaderProgram::SetUniform1f(int location, float f0) {
+	GLCall(::glUniform1f(location, f0));
+}
+
+void ShaderProgram::SetUniform1f(const std::string& name, float f0) {
+	GLCall(::glUniform1f(GetUniformLocation(name.c_str()), f0));
+}
+
 void ShaderProgram::SetUniform4f(int location, float f0, float f1, float f2, float f3) {
 	GLCall(::glUniform4f(location, f0, f1, f2, f3));
 }

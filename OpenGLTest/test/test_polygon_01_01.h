@@ -1,3 +1,6 @@
+#ifndef __TEST_POLYGON_01_01_H__
+#define __TEST_POLYGON_01_01_H__
+
 #include "test.h"
 
 #include "renderer.h"
@@ -33,3 +36,5 @@ namespace Test {
 		virtual void OnImGuiRender();
 	};
 }
+
+#endif // __TEST_POLYGON_01_01_H__
