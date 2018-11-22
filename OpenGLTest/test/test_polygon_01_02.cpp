@@ -36,7 +36,7 @@ namespace Test {
 		SetupVertexArray();
 		SetupVertexBuffer();
 		SetupLayout();
-		m_pVA->AddBuffer(0, *m_pVB, *m_pLayout);
+		m_pVA->AddBuffer(*m_pVB, *m_pLayout);
 		SetupShaders();
 
 		m_pVA->UnBind();

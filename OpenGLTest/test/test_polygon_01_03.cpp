@@ -70,7 +70,7 @@ namespace Test {
 		SetupShaders();
 
 		SetupLayout();
-		m_pVA->AddBuffer(0, *m_pVB, *m_pLayout);
+		m_pVA->AddBuffer(*m_pVB, *m_pLayout);
 
 		m_pVA->UnBind();
 		m_pVB->UnBind();

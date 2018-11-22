@@ -3,36 +3,35 @@
 #include <array>
 
 VertexArray::VertexArray()
-	: m_arrays{}
-	//, m_arrayId{ 0 }
+	//: m_arrays{}
+	: m_arrayId{ 0 }
 {
-	GLuint array;
-	GLCall(::glGenVertexArrays(1, &array));
-	m_arrays.push_back(array);
+	//GLuint array;
+	GLCall(::glGenVertexArrays(1, &m_arrayId));
+	//m_arrays.push_back(array);
 }
 
-VertexArray::VertexArray(const GLuint& count)
-	: m_arrays{}
-	//, m_arrayId{ 0 }
-{
-	for (GLuint i = 0; i < count; i++) {
-		GLuint array;
-		GLCall(::glGenVertexArrays(1, &array));
-		m_arrays.push_back(array);
-	}
-}
+//VertexArray::VertexArray(const GLuint& count)
+//	: m_arrays{}
+//	//, m_arrayId{ 0 }
+//{
+//	for (GLuint i = 0; i < count; i++) {
+//		GLuint array;
+//		GLCall(::glGenVertexArrays(1, &array));
+//		m_arrays.push_back(array);
+//	}
+//}
 
 
 VertexArray::~VertexArray()
 {
-	GLCall(::glDeleteVertexArrays(static_cast<GLuint>(m_arrays.size()), m_arrays.data()));
+	GLCall(::glDeleteVertexArrays(1, &m_arrayId));
 }
 
-void VertexArray::AddBuffer(GLuint index, 
-	const VertexBuffer& vertexBuffer, 
+void VertexArray::AddBuffer(const VertexBuffer& vertexBuffer, 
 	const VertexBufferLayout& layout)
 {
-	Bind(index);
+	Bind();
 	vertexBuffer.Bind();
 	const std::vector<VertexBufferElement> elements{ layout.GetElements() };
 	unsigned int offset{0};
@@ -45,8 +44,8 @@ void VertexArray::AddBuffer(GLuint index,
 	}
 }
 
-void VertexArray::Bind(GLuint index) const {
-	GLCall(::glBindVertexArray(m_arrays[index]));
+void VertexArray::Bind() const {
+	GLCall(::glBindVertexArray(m_arrayId));
 }
 
 void VertexArray::UnBind() const {

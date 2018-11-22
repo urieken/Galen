@@ -12,7 +12,7 @@
 namespace Test {
 	class TestTriangle_01_03 : public TestBase {
 	protected:
-		std::unique_ptr<VertexArray>                     m_pVA;
+		std::vector<std::unique_ptr<VertexArray>>        m_VAs;
 		std::vector<std::unique_ptr<VertexBuffer>>       m_VBs;
 		std::vector<std::unique_ptr<VertexBufferLayout>> m_layouts;
 		std::vector<std::unique_ptr<ShaderProgram>>      m_shaders;

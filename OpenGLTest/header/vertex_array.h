@@ -5,18 +5,17 @@
 #include "vertex_buffer_layout.h"
 
 class VertexArray {
-	std::vector<GLuint> m_arrays;
-	//unsigned int m_arrayId;
+	//std::vector<GLuint> m_arrays;
+	unsigned int m_arrayId;
 public:
 	VertexArray();
-	VertexArray(const GLuint& count);
+	//VertexArray(const GLuint& count);
 	virtual ~VertexArray();
 
-	void AddBuffer(GLuint index, 
-		const VertexBuffer& vertexBuffer,
+	void AddBuffer(const VertexBuffer& vertexBuffer,
 		const VertexBufferLayout& layout);
 
-	void Bind(GLuint index = 0) const;
+	void Bind() const;
 	void UnBind() const;
 };
 

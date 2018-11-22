@@ -15,7 +15,7 @@ namespace Test {
 			shaders.clear();
 		}
 		insert_shader(shaders, "res/shaders/test_triangle_01_02.vert", GL_VERTEX_SHADER);
-		insert_shader(shaders, "res/shaders/test_triangle_01_02.frag", GL_FRAGMENT_SHADER);
+		insert_shader(shaders, "res/shaders/test_triangle_01_03_yellow.frag", GL_FRAGMENT_SHADER);
 		if (m_shaders[1]->CompileShaders(shaders) && m_shaders[1]->LinkProgram()) {
 			shaders.clear();
 		}
@@ -23,7 +23,8 @@ namespace Test {
 
 	void TestTriangle_01_03::SetupVertexArray() {
 		LOG_SCOPE(__FUNCTION__);
-		m_pVA = std::make_unique<VertexArray>(2);
+		m_VAs.push_back(std::make_unique<VertexArray>());
+		m_VAs.push_back(std::make_unique<VertexArray>());
 	}
 
 	void TestTriangle_01_03::SetupVertexBuffer() {
@@ -54,10 +55,10 @@ namespace Test {
 		m_layouts.push_back(std::make_unique<VertexBufferLayout>());
 		m_layouts.push_back(std::make_unique<VertexBufferLayout>());
 		m_layouts[0]->Push<float>(3);
-		m_pVA->AddBuffer(0, *m_VBs[0], *m_layouts[0]);
+		m_VAs[0]->AddBuffer(*m_VBs[0], *m_layouts[0]);
 
 		m_layouts[1]->Push<float>(3);
-		m_pVA->AddBuffer(1, *m_VBs[1], *m_layouts[1]);
+		m_VAs[1]->AddBuffer(*m_VBs[1], *m_layouts[1]);
 	}
 
 	void TestTriangle_01_03::SetupRenderer() {
@@ -66,10 +67,8 @@ namespace Test {
 	}
 
 	TestTriangle_01_03::TestTriangle_01_03()
-		: m_pVA{ nullptr }
 	{
 		LOG_SCOPE(__FUNCTION__);
-
 	}
 
 	TestTriangle_01_03::~TestTriangle_01_03()
@@ -95,7 +94,8 @@ namespace Test {
 
 	void TestTriangle_01_03::OnRender()
 	{
-		m_pRenderer->Draw(*m_pVA, *(m_VBs[0]), *(m_shaders[0]));
+		m_pRenderer->Draw(*m_VAs[0], *(m_VBs[0]), *(m_shaders[0]));
+		m_pRenderer->Draw(*m_VAs[1], *(m_VBs[1]), *(m_shaders[1]));
 	}
 
 	//void TestTriangle_01_03::OnImGuiRender()
