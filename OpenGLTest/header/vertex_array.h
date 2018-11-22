@@ -9,7 +9,7 @@ class VertexArray {
 	//unsigned int m_arrayId;
 public:
 	VertexArray();
-	VertexArray(GLuint count);
+	VertexArray(const GLuint& count);
 	virtual ~VertexArray();
 
 	void AddBuffer(GLuint index, 

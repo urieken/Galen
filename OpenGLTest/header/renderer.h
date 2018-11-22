@@ -11,12 +11,13 @@ public:
 	Renderer();
 	virtual ~Renderer();
 
-	const unsigned int GetDrawingMode() const;
-	void SetDrawingMode(const unsigned int drawingMode);
-
 	void SetPolygonMode(unsigned int face, unsigned int mode);
+
 	void SetClearColor(float r, float g, float b, float a);
 	void Clear() const;
+
+	const unsigned int GetDrawingMode() const;
+	void SetDrawingMode(const unsigned int drawingMode);
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const ShaderProgram& shader) const;
 	void Draw(const VertexArray& va, const VertexBuffer& vb,  ShaderProgram& shader) const;
 };

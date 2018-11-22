@@ -121,6 +121,7 @@ int Application::Run()
 	pTestMenu->RegisterTest<Test::TestTexture>("TEXTURE TEST                ");
 	pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE       ");
 	pTestMenu->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01      ");
+	pTestMenu->RegisterTest<Test::TestTriangle_01_03>("TRIANGLE TEST 01 EX 02 VAOs ");
 
 
 	pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE        ");

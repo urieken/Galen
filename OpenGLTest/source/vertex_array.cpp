@@ -1,5 +1,7 @@
 #include "vertex_array.h"
 
+#include <array>
+
 VertexArray::VertexArray()
 	: m_arrays{}
 	//, m_arrayId{ 0 }
@@ -9,13 +11,15 @@ VertexArray::VertexArray()
 	m_arrays.push_back(array);
 }
 
-VertexArray::VertexArray(GLuint count)
+VertexArray::VertexArray(const GLuint& count)
 	: m_arrays{}
 	//, m_arrayId{ 0 }
 {
-	GLuint* arrays{nullptr};
-	GLCall(::glGenVertexArrays(count, arrays));
-	m_arrays = std::vector<GLuint>(arrays, arrays + count);
+	for (GLuint i = 0; i < count; i++) {
+		GLuint array;
+		GLCall(::glGenVertexArrays(1, &array));
+		m_arrays.push_back(array);
+	}
 }
 
 

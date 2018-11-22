@@ -7,6 +7,7 @@
 #include "test_clear_color.h"
 #include "test_triangle_01_01.h"
 #include "test_triangle_01_02.h"
+#include "test_triangle_01_03.h"
 
 #include "test_polygon_01_01.h"
 #include "test_polygon_01_02.h"
