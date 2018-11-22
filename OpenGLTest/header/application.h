@@ -15,9 +15,13 @@ class Application {
 
 	void RegisterTests(Test::TestMenu* pTest);
 
+	bool ShowBackButton();
+
 public:
 	Application();
 	virtual ~Application();
+
+
 
 	bool Initialize();
 	int Run();

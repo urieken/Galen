@@ -28,7 +28,8 @@ bool Application::CreateWindow()
 	bool bSuccess{ true };
 	LOG_SCOPE(__FUNCTION__);
 	//m_pWindow = ::glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
-	m_pWindow = ::glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
+	//m_pWindow = ::glfwCreateWindow(1280, 720, "Hello World", nullptr, nullptr);
+	m_pWindow = ::glfwCreateWindow(1600, 900, "Hello World", nullptr, nullptr);
 	if ((bSuccess = (nullptr != m_pWindow))) {
 		LOG_INFO("GLFW WINDOW CREATED");
 
@@ -84,6 +85,15 @@ void Application::RegisterTests(Test::TestMenu* pTest) {
 	pTest->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE        ");
 	pTest->RegisterTest<Test::TestPolygon_01_02>("POLYGON TEST 01 EX 01 SHADER");
 	pTest->RegisterTest<Test::TestPolygon_01_03>("POLYGON TEST 01 EX 03 COLORS");
+}
+
+bool Application::ShowBackButton() {
+	bool bReturn{ ImGui::Button("BACK") };
+	
+	ImGui::SameLine();
+	ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 }, "<= Back to main menu");
+	
+	return bReturn;
 }
 
 void Application::RenderImGui()
@@ -146,7 +156,10 @@ int Application::Run()
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	while (!::glfwWindowShouldClose(m_pWindow)) {	
+	bool bDone{ false };
+	bool bShowDemo{ false };
+	while (!bDone) {	
+		bDone = ::glfwWindowShouldClose(m_pWindow);
 		pRenderer->Clear();
 		CreateImGuiFrame();
 		ImGui::SetNextWindowBgAlpha(0.5f);
@@ -154,15 +167,34 @@ int Application::Run()
 		if (nullptr != pCurrentTest) {
 			pCurrentTest->OnUpdate(0.0f);
 			pCurrentTest->OnRender();
-			ImGui::Begin("TEST");
-			if ((pCurrentTest != pTestMenu) && (ImGui::Button("BACK"))) {
+			ImGui::Begin("Galen's OpenGL research");
+			if ((pCurrentTest != pTestMenu) && ShowBackButton()) {
 				delete pCurrentTest;
 				pCurrentTest = pTestMenu;
 				pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			}
+			ImGui::TextColored({ 1.0, 1.0, 0.0, 1.0 }, "Review C++ and Math using OpenGL");
+			ImGui::Separator();
+			bDone = ImGui::Button("QUIT"); 
+			ImGui::SameLine();
+			ImGui::TextColored({ 1.0, 0.0, 0.0, 1.0 }, "<= To quit the application");
+			ImGui::Separator();
+			ImGui::Separator();
+			ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 },
+				"Click the items below to test some OpenGL techniques.");
 			pCurrentTest->OnImGuiRender();
 			ImGui::End();
 		}
+		ImGui::SetNextWindowBgAlpha(0.5f);
+		ImGui::Begin("Application Details");
+		ImGui::Separator();
+		ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "FRAMES PER SECOND              : %.1f",
+			ImGui::GetIO().Framerate);
+		ImGui::Separator();
+		ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "AVERAGE MILLISECONDS PER FRAME : %.3f",
+			1000.0f / ImGui::GetIO().Framerate);
+		ImGui::Separator();
+		ImGui::End();
 
 		RenderImGui();
 		::glfwSwapBuffers(m_pWindow);

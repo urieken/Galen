@@ -132,8 +132,7 @@ namespace Test {
 		ImGui::ColorEdit3("clear color", (float*)&m_clear_color);
 		m_pRenderer->SetClearColor(m_clear_color.x, m_clear_color.y, 
 			m_clear_color.z, m_clear_color.w);
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
-			1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
 	}
 
 }

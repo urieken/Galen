@@ -1,5 +1,7 @@
 #include "test_clear_color.h"
 
+#include <array>
+
 #include "core.h"
 #include "imgui.h"
 
@@ -29,6 +31,16 @@ namespace Test
 	
 	void ClearColor::OnImGuiRender()
 	{
+		ImGui::Text("Testing for clearing the color buffer");
+		ImGui::Separator();
 		ImGui::ColorEdit3("Clear Color", m_clearColor);
+		ImGui::Separator();
+		//ImGui::ShowTestWindow();
+		std::array<int, 10> arr = { 0 };
+		for (int i = 0; i < arr.size(); ++i) {
+			ImGui::PushID(i);
+			ImGui::InputInt("##", &arr[i]);
+			ImGui::PopID();
+		}
 	}
 }
