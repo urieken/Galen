@@ -7,9 +7,9 @@ namespace Test {
 		LOG_SCOPE(__FUNCTION__);
 		std::vector<float> vertices{
 			// X     Y     R     G     B
-			-0.5f, -0.5f, 1.0f, 0.0f, 0.0f,  // 0
+			-0.5f, -0.5f, 1.0f, 1.0f, 1.0f,  // 0
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  // 1
-			 0.0f,  0.5f, 0.0f, 0.0f, 1.0f   // 2
+			 0.0f,  0.5f, 1.0f, 0.0f, 1.0f   // 2
 		};
 		m_pVB = std::make_unique<VertexBuffer>(
 			reinterpret_cast<const void*>(vertices.data()),

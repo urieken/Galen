@@ -187,6 +187,7 @@
     <ClCompile Include="test\test_texture.cpp" />
     <ClCompile Include="test\test_triangle_01_01.cpp" />
     <ClCompile Include="test\test_triangle_01_02.cpp" />
+    <ClCompile Include="test\test_triangle_01_03.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
