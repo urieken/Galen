@@ -2,6 +2,7 @@
 #define __APPLICATION_H__
 
 #include "core.h"
+#include "../test/test_list.h"
 
 class Application {
 	GLFWwindow* m_pWindow;
@@ -11,6 +12,8 @@ class Application {
 	void CreateImGuiFrame();
 	void RenderImGui();
 	void DestroyImGui();
+
+	void RegisterTests(Test::TestMenu* pTest);
 
 public:
 	Application();

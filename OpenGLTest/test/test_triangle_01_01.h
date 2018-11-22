@@ -11,7 +11,7 @@
 
 
 namespace Test {
-	class TestTriangle_01_01 : public TestBase {
+	class TestTriangle_01_01 : public BaseTest {
 
 	protected:		
 		std::unique_ptr<VertexArray>          m_pVA;

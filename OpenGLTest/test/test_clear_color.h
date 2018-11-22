@@ -4,11 +4,11 @@
 #include "test.h"
 
 namespace Test {
-	class TestClearColor : public TestBase{
+	class ClearColor : public BaseTest{
 		float m_clearColor[4];
 	public:
-		TestClearColor();
-		virtual ~TestClearColor();
+		ClearColor();
+		virtual ~ClearColor();
 		
 		void OnUpdate(float delta_time) override;
 		void OnRender() override;

@@ -4,7 +4,7 @@
 
 namespace Test {
 
-	void TestTexture::SetupBuffers()
+	void TextureTest::SetupBuffers()
 	{
 		LOG_SCOPE(__FUNCTION__);
 
@@ -60,8 +60,8 @@ namespace Test {
 		m_pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	}
 
-	TestTexture::TestTexture()
-		: TestBase{}
+	TextureTest::TextureTest()
+		: BaseTest{}
 		, m_pShader{ nullptr }
 		, m_pVA{ nullptr }
 		, m_pVB{ nullptr }
@@ -78,18 +78,18 @@ namespace Test {
 		LOG_SCOPE(__FUNCTION__);
 	}
 
-	TestTexture::~TestTexture()
+	TextureTest::~TextureTest()
 	{
 		LOG_SCOPE(__FUNCTION__);
 	}
 
-	void TestTexture::OnInitialize()
+	void TextureTest::OnInitialize()
 	{
 		LOG_SCOPE(__FUNCTION__);
 		SetupBuffers();
 	}
 
-	void TestTexture::OnUpdate(float delta_time)
+	void TextureTest::OnUpdate(float delta_time)
 	{
 		m_model = glm::translate(glm::mat4(1.0f), m_trans_a);
 		m_model = glm::translate(glm::mat4(1.0f), m_trans_b);
@@ -104,7 +104,7 @@ namespace Test {
 		}
 	}
 
-	void TestTexture::OnRender()
+	void TextureTest::OnRender()
 	{
 		m_pRenderer->Clear();
 		m_pShader->Bind();
@@ -124,7 +124,7 @@ namespace Test {
 
 	}
 
-	void TestTexture::OnImGuiRender()
+	void TextureTest::OnImGuiRender()
 	{
 		ImGui::SliderFloat3("Translation A", &m_trans_a.x, -1.0f, 1.0f);
 		ImGui::SliderFloat3("Translation B", &m_trans_b.x, -1.0f, 1.0f);

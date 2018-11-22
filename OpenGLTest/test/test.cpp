@@ -3,32 +3,32 @@
 
 namespace Test
 {
-	TestBase::TestBase()
+	BaseTest::BaseTest()
 	{
 	
 	}
 	
-	TestBase::~TestBase()
+	BaseTest::~BaseTest()
 	{
 	
 	}
 
-	void TestBase::OnInitialize()
+	void BaseTest::OnInitialize()
 	{
 		LOG_SCOPE(__FUNCTION__);
 	}
 	
-	void TestBase::OnUpdate(float delta_time)
+	void BaseTest::OnUpdate(float delta_time)
 	{
 		(void)(delta_time);
 	}
 	
-	void TestBase::OnRender()
+	void BaseTest::OnRender()
 	{
 	
 	}
 	
-	void TestBase::OnImGuiRender()
+	void BaseTest::OnImGuiRender()
 	{
 	}
 	

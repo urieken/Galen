@@ -5,29 +5,29 @@
 
 namespace Test
 {
-	TestClearColor::TestClearColor()
+	ClearColor::ClearColor()
 		: m_clearColor{0.0f, 0.0f, 0.0f, 1.0f}
 	{
 	
 	}
 	
-	TestClearColor::~TestClearColor()
+	ClearColor::~ClearColor()
 	{
 	
 	}
 	
-	void TestClearColor::OnUpdate(float delta_time)
+	void ClearColor::OnUpdate(float delta_time)
 	{
 	
 	}
 	
-	void TestClearColor::OnRender()
+	void ClearColor::OnRender()
 	{
 		GLCall(::glClearColor(m_clearColor[0], m_clearColor[1], m_clearColor[2], m_clearColor[3]));
 		GLCall(::glClear(GL_COLOR_BUFFER_BIT));
 	}
 	
-	void TestClearColor::OnImGuiRender()
+	void ClearColor::OnImGuiRender()
 	{
 		ImGui::ColorEdit3("Clear Color", m_clearColor);
 	}

@@ -5,10 +5,10 @@
 
 namespace Test
 {
-	class TestBase {
+	class BaseTest {
 	public:
-		TestBase();
-		virtual ~TestBase();
+		BaseTest();
+		virtual ~BaseTest();
 
 		virtual void OnInitialize();
 

@@ -15,7 +15,7 @@
 #include "vertex_buffer_layout.h"
 
 namespace Test {
-	class TestTexture : public TestBase {
+	class TextureTest : public BaseTest {
 		std::unique_ptr<ShaderProgram>      m_pShader;
 		std::unique_ptr<VertexArray>        m_pVA;
 		std::unique_ptr<VertexBuffer>       m_pVB;
@@ -39,8 +39,8 @@ namespace Test {
 		void SetupBuffers();
 
 	public:
-		TestTexture();
-		virtual ~TestTexture();
+		TextureTest();
+		virtual ~TextureTest();
 
 		void OnInitialize() override;
 

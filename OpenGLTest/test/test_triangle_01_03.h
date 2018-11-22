@@ -10,7 +10,7 @@
 #include "vertex_buffer_layout.h"
 
 namespace Test {
-	class TestTriangle_01_03 : public TestBase {
+	class TestTriangle_01_03 : public BaseTest {
 	protected:
 		std::vector<std::unique_ptr<VertexArray>>        m_VAs;
 		std::vector<std::unique_ptr<VertexBuffer>>       m_VBs;

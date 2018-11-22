@@ -10,11 +10,11 @@
 
 namespace Test {
 
-	class TestMenu : public TestBase {
-		TestBase*& m_pCurrentTest;
-		std::vector<std::pair<std::string, std::function<TestBase*()>>> m_tests;
+	class TestMenu : public BaseTest {
+		BaseTest*& m_pCurrentTest;
+		std::vector<std::pair<std::string, std::function<BaseTest*()>>> m_tests;
 	public:
-		TestMenu(TestBase*& pCurrentTest);
+		TestMenu(BaseTest*& pCurrentTest);
 
 		void OnImGuiRender();
 

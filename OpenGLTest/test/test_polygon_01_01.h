@@ -10,7 +10,7 @@
 #include "vertex_buffer_layout.h"
 
 namespace Test {
-	class TestPolygon_01_01 : public TestBase {
+	class TestPolygon_01_01 : public BaseTest {
 	protected:
 
 		std::unique_ptr<VertexArray>           m_pVA;
