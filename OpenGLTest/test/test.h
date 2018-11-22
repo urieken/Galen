@@ -9,7 +9,7 @@ namespace Test
 	public:
 		BaseTest();
 		virtual ~BaseTest();
-
+		inline virtual bool IsMenu() { return false; }
 		virtual void OnInitialize();
 
 		virtual void OnUpdate(float delta_time);

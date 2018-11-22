@@ -180,8 +180,11 @@ int Application::Run()
 			ImGui::TextColored({ 1.0, 0.0, 0.0, 1.0 }, "<= To quit the application");
 			ImGui::Separator();
 			ImGui::Separator();
-			ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 },
-				"Click the items below to test some OpenGL techniques.");
+			if (pCurrentTest->IsMenu()) {
+				ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 },
+					"Click the items below to test some OpenGL techniques.");
+				ImGui::Separator();
+			}
 			pCurrentTest->OnImGuiRender();
 			ImGui::End();
 		}

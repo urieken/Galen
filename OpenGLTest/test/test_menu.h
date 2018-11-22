@@ -15,7 +15,7 @@ namespace Test {
 		std::vector<std::pair<std::string, std::function<BaseTest*()>>> m_tests;
 	public:
 		TestMenu(BaseTest*& pCurrentTest);
-
+		inline virtual bool IsMenu() { return true; }
 		void OnImGuiRender();
 
 		template<typename _T>
