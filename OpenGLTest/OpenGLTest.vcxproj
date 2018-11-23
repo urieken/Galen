@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendors\logger;$(ProjectDir)vendors\glfw\include;$(ProjectDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendors\logger;$(ProjectDir)vendors\glfw\include;$(ProjectDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendors\logger;$(ProjectDir)vendors\glfw\include;$(ProjectDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)vendors\logger;$(ProjectDir)vendors\glfw\include;$(ProjectDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)vendors;$(ProjectDir)test\header;$(ProjectDir)vendors\glm;$(ProjectDir)vendors\imgui;$(ProjectDir)vendors\stb_image</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -165,6 +165,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\application.cpp" />
     <ClCompile Include="source\core.cpp" />
+    <ClCompile Include="source\gui.cpp" />
     <ClCompile Include="source\index_buffer.cpp" />
     <ClCompile Include="source\renderer.cpp" />
     <ClCompile Include="source\shader_program.cpp" />
@@ -191,11 +192,11 @@
     <ClCompile Include="vendors\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\logger\logger\logger.vcxproj">
-      <Project>{c53214b9-eee2-4416-abc0-92ae8571a62e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\vendors\glew\build\vc15\glew_static.vcxproj">
+    <ProjectReference Include="vendors\glew\build\vc15\glew_static.vcxproj">
       <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendors\logger\logger.vcxproj">
+      <Project>{c53214b9-eee2-4416-abc0-92ae8571a62e}</Project>
     </ProjectReference>
     <ProjectReference Include="vendors\stb_image\stb_image.vcxproj">
       <Project>{3542a11f-4c75-457e-aeb8-cf0aa2b52bd7}</Project>
@@ -205,6 +206,7 @@
     <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\debugbreak.h" />
+    <ClInclude Include="header\gui.h" />
     <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\renderer.h" />
     <ClInclude Include="header\shader_program.h" />
@@ -212,6 +214,17 @@
     <ClInclude Include="header\vertex_array.h" />
     <ClInclude Include="header\vertex_buffer.h" />
     <ClInclude Include="header\vertex_buffer_layout.h" />
+    <ClInclude Include="test\header\test.h" />
+    <ClInclude Include="test\header\test_clear_color.h" />
+    <ClInclude Include="test\header\test_list.h" />
+    <ClInclude Include="test\header\test_menu.h" />
+    <ClInclude Include="test\header\test_polygon_01_01.h" />
+    <ClInclude Include="test\header\test_polygon_01_02.h" />
+    <ClInclude Include="test\header\test_polygon_01_03.h" />
+    <ClInclude Include="test\header\test_texture.h" />
+    <ClInclude Include="test\header\test_triangle_01_01.h" />
+    <ClInclude Include="test\header\test_triangle_01_02.h" />
+    <ClInclude Include="test\header\test_triangle_01_03.h" />
     <ClInclude Include="vendors\glm\common.hpp" />
     <ClInclude Include="vendors\glm\detail\compute_common.hpp" />
     <ClInclude Include="vendors\glm\detail\compute_vector_relational.hpp" />

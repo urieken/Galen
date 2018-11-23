@@ -7,7 +7,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-
+#include "gui.h"
 
 
 Application::Application() 
@@ -54,25 +54,6 @@ bool Application::CreateWindow()
 	return bSuccess;
 }
 
-void Application::InitializeImGui()
-{
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-	ImGui_ImplGlfw_InitForOpenGL(m_pWindow, true);
-	ImGui_ImplOpenGL3_Init("#version 130");
-	ImGui::StyleColorsDark();
-}
-
-void Application::CreateImGuiFrame()
-{
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
-
-}
-
 void Application::RegisterTests(Test::TestMenu* pTest) {
 
 	pTest->RegisterTest<Test::ClearColor>("CLEAR COLOR TEST            ");
@@ -110,46 +91,6 @@ void Application::ShowMainMenuBar()
 	}
 }
 
-void Application::ShowToolTipMarker(const std::string& toolTip)
-{
-	ImGui::TextDisabled("(?)");
-	if (ImGui::IsItemHovered()) {
-		ImGui::BeginTooltip();
-		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
-		ImGui::TextUnformatted(toolTip.c_str());
-		ImGui::PopTextWrapPos();
-		ImGui::EndTooltip();
-	}
-}
-
-void Application::ShowGlobalDetails() {
-	ImGui::SetNextWindowBgAlpha(0.5f);
-	ImGui::Begin("Application Details");
-	ImGui::SameLine();
-	ShowToolTipMarker("Global application details");
-	ImGui::Separator();
-	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "FRAMES PER SECOND              : %.1f",
-		ImGui::GetIO().Framerate);
-	ImGui::Separator();
-	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "AVERAGE MILLISECONDS PER FRAME : %.3f",
-		1000.0f / ImGui::GetIO().Framerate);
-	ImGui::Separator();
-	ImGui::End();
-}
-
-void Application::RenderImGui()
-{
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-}
-
-void Application::DestroyImGui()
-{
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
-}
-
 // Public
 
 bool Application::Initialize()
@@ -166,7 +107,7 @@ bool Application::Initialize()
 		::glfwSetErrorCallback(glfw_error_callback);
 
 		bSuccess = CreateWindow();
-		InitializeImGui();
+		Gui::Init(m_pWindow);
 	}
 	else { LOG_FATAL("FAILED TO INITIALIZE GLFW"); }
 	return bSuccess;
@@ -186,30 +127,22 @@ int Application::Run()
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	bool bDone{ false };
-	bool bShowDemo{ false };
-	while (!bDone) {	
-		bDone = ::glfwWindowShouldClose(m_pWindow);
+	while (!::glfwWindowShouldClose(m_pWindow)) {
 		pRenderer->Clear();
-		CreateImGuiFrame();
+		Gui::CeateFrame();
 		if (nullptr != pCurrentTest) {
 			pCurrentTest->OnUpdate(0.0f);
 			pCurrentTest->OnRender();
 			ShowMainMenuBar();
 			ImGui::SetNextWindowBgAlpha(0.5f);
 			ImGui::Begin("Galen's OpenGL research");
+			ImGui::TextColored({ 1.0, 1.0, 0.0, 1.0 }, "C++ and Math review using OpenGL");
+			ImGui::Separator();
 			if ((pCurrentTest != pTestMenu) && ShowBackButton()) {
 				delete pCurrentTest;
 				pCurrentTest = pTestMenu;
 				pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			}
-			ImGui::TextColored({ 1.0, 1.0, 0.0, 1.0 }, "C++ and Math review using OpenGL");
-			ImGui::Separator();
-			bDone = ImGui::Button("QUIT"); 
-			ImGui::SameLine();
-			ImGui::TextColored({ 1.0, 0.0, 0.0, 1.0 }, "<= To quit the application");
-			ImGui::Separator();
-			ImGui::Separator();
 			if (pCurrentTest->IsMenu()) {
 				ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 },
 					"Click the items below to test some OpenGL techniques.");
@@ -218,16 +151,15 @@ int Application::Run()
 			pCurrentTest->OnImGuiRender();
 			ImGui::End();
 		}
-		ShowGlobalDetails();
-		RenderImGui();
+		Gui::GlobalDetails();
+		Gui::Render();
 		::glfwSwapBuffers(m_pWindow);
 		::glfwPollEvents();
 	}
 	if(nullptr != pCurrentTest) 
 		delete pCurrentTest;
 	pTestMenu = nullptr;
-	DestroyImGui();
-
+	Gui::Destroy();
 	::glfwTerminate();
 	return nReturn;
 }

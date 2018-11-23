@@ -55,6 +55,9 @@
     <Filter Include="Header Files\glm\ext">
       <UniqueIdentifier>{11e4d470-5206-46c4-8a7b-d2ac1da69f8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\test">
+      <UniqueIdentifier>{8a49811d-c93e-4d4d-8c79-0975522277f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="vendors\imgui\imgui.cpp">
@@ -137,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="source\vertex_buffer_layout.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\gui.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -913,6 +919,42 @@
     </ClInclude>
     <ClInclude Include="header\vertex_buffer_layout.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_clear_color.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_list.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_menu.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_01.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_02.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_03.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_texture.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_01.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_02.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_03.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="header\gui.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

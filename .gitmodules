@@ -1,9 +1,0 @@
-[submodule "vendors/glew"]
-	path = vendors/glew
-	url = https://github.com/nigels-com/glew
-[submodule "vendors/glfw"]
-	path = vendors/glfw
-	url = https://github.com/glfw/glfw
-[submodule "logger"]
-	path = logger
-	url = https://github.com/urieken/logger

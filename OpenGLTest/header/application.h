@@ -10,24 +10,17 @@ class Application {
 	GLFWwindow* m_pWindow;
 	
 	bool CreateWindow();
-	void InitializeImGui();
-	void CreateImGuiFrame();
-	void RenderImGui();
-	void DestroyImGui();
 
 	void RegisterTests(Test::TestMenu* pTest);
 
 	bool ShowBackButton();
 	void ShowMainMenuBar();
-	void ShowToolTipMarker(const std::string & toolTip);
-	void ShowGlobalDetails();
 
 public:
+
 	Application();
 	virtual ~Application();
-
-
-
+	   
 	bool Initialize();
 	int Run();
 };
