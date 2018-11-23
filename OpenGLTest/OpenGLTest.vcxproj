@@ -205,17 +205,6 @@
     <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\debugbreak.h" />
-    <ClInclude Include="test\header\test.h" />
-    <ClInclude Include="test\header\test_clear_color.h" />
-    <ClInclude Include="test\header\test_list.h" />
-    <ClInclude Include="test\header\test_menu.h" />
-    <ClInclude Include="test\header\test_polygon_01_01.h" />
-    <ClInclude Include="test\header\test_polygon_01_02.h" />
-    <ClInclude Include="test\header\test_polygon_01_03.h" />
-    <ClInclude Include="test\header\test_texture.h" />
-    <ClInclude Include="test\header\test_triangle_01_01.h" />
-    <ClInclude Include="test\header\test_triangle_01_02.h" />
-    <ClInclude Include="test\header\test_triangle_01_03.h" />
     <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\renderer.h" />
     <ClInclude Include="header\shader_program.h" />
@@ -622,6 +611,9 @@
   <ItemGroup>
     <Image Include="res\images\cpp.png" />
     <Image Include="res\images\opengl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vendors\glm\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
