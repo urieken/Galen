@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(SolutionDir)vendors\imgui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)test\header;$(ProjectDir)vendors\imgui</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(SolutionDir)vendors\imgui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)test\header;$(ProjectDir)vendors\imgui</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(SolutionDir)vendors\imgui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)test\header;$(ProjectDir)vendors\imgui</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(ProjectDir)header;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(SolutionDir)vendors\imgui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendors\stb_image;$(SolutionDir)vendors\glm;$(SolutionDir)vendors;$(SolutionDir)logger\logger;$(SolutionDir)vendors\glfw\include;$(SolutionDir)vendors\glew\include;$(ProjectDir)header;$(ProjectDir)test\header;$(ProjectDir)vendors\imgui</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLEW;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -162,12 +162,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\vendors\imgui\imgui.cpp" />
-    <ClCompile Include="..\vendors\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\vendors\imgui\imgui_draw.cpp" />
-    <ClCompile Include="..\vendors\imgui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="..\vendors\imgui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="..\vendors\imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\application.cpp" />
     <ClCompile Include="source\core.cpp" />
@@ -178,16 +172,22 @@
     <ClCompile Include="source\vertex_array.cpp" />
     <ClCompile Include="source\vertex_buffer.cpp" />
     <ClCompile Include="source\vertex_buffer_layout.cpp" />
-    <ClCompile Include="test\test.cpp" />
-    <ClCompile Include="test\test_clear_color.cpp" />
-    <ClCompile Include="test\test_menu.cpp" />
-    <ClCompile Include="test\test_polygon_01_01.cpp" />
-    <ClCompile Include="test\test_polygon_01_02.cpp" />
-    <ClCompile Include="test\test_polygon_01_03.cpp" />
-    <ClCompile Include="test\test_texture.cpp" />
-    <ClCompile Include="test\test_triangle_01_01.cpp" />
-    <ClCompile Include="test\test_triangle_01_02.cpp" />
-    <ClCompile Include="test\test_triangle_01_03.cpp" />
+    <ClCompile Include="test\source\test.cpp" />
+    <ClCompile Include="test\source\test_clear_color.cpp" />
+    <ClCompile Include="test\source\test_menu.cpp" />
+    <ClCompile Include="test\source\test_polygon_01_01.cpp" />
+    <ClCompile Include="test\source\test_polygon_01_02.cpp" />
+    <ClCompile Include="test\source\test_polygon_01_03.cpp" />
+    <ClCompile Include="test\source\test_texture.cpp" />
+    <ClCompile Include="test\source\test_triangle_01_01.cpp" />
+    <ClCompile Include="test\source\test_triangle_01_02.cpp" />
+    <ClCompile Include="test\source\test_triangle_01_03.cpp" />
+    <ClCompile Include="vendors\imgui\imgui.cpp" />
+    <ClCompile Include="vendors\imgui\imgui_demo.cpp" />
+    <ClCompile Include="vendors\imgui\imgui_draw.cpp" />
+    <ClCompile Include="vendors\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="vendors\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="vendors\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\logger\logger\logger.vcxproj">
@@ -201,22 +201,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\vendors\imgui\imconfig.h" />
-    <ClInclude Include="..\vendors\imgui\imgui.h" />
-    <ClInclude Include="..\vendors\imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="..\vendors\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="..\vendors\imgui\imgui_internal.h" />
-    <ClInclude Include="..\vendors\imgui\imstb_rectpack.h" />
-    <ClInclude Include="..\vendors\imgui\imstb_textedit.h" />
-    <ClInclude Include="..\vendors\imgui\imstb_truetype.h" />
     <ClInclude Include="header\application.h" />
     <ClInclude Include="header\core.h" />
     <ClInclude Include="header\debugbreak.h" />
-    <ClInclude Include="test\test_list.h" />
-    <ClInclude Include="test\test_polygon_01_01.h" />
-    <ClInclude Include="test\test_polygon_01_02.h" />
-    <ClInclude Include="test\test_polygon_01_03.h" />
-    <ClInclude Include="test\test_triangle_01_03.h" />
+    <ClInclude Include="test\header\test.h" />
+    <ClInclude Include="test\header\test_clear_color.h" />
+    <ClInclude Include="test\header\test_list.h" />
+    <ClInclude Include="test\header\test_menu.h" />
+    <ClInclude Include="test\header\test_polygon_01_01.h" />
+    <ClInclude Include="test\header\test_polygon_01_02.h" />
+    <ClInclude Include="test\header\test_polygon_01_03.h" />
+    <ClInclude Include="test\header\test_texture.h" />
+    <ClInclude Include="test\header\test_triangle_01_01.h" />
+    <ClInclude Include="test\header\test_triangle_01_02.h" />
+    <ClInclude Include="test\header\test_triangle_01_03.h" />
     <ClInclude Include="header\index_buffer.h" />
     <ClInclude Include="header\renderer.h" />
     <ClInclude Include="header\shader_program.h" />
@@ -224,12 +222,14 @@
     <ClInclude Include="header\vertex_array.h" />
     <ClInclude Include="header\vertex_buffer.h" />
     <ClInclude Include="header\vertex_buffer_layout.h" />
-    <ClInclude Include="test\test.h" />
-    <ClInclude Include="test\test_clear_color.h" />
-    <ClInclude Include="test\test_menu.h" />
-    <ClInclude Include="test\test_texture.h" />
-    <ClInclude Include="test\test_triangle_01_01.h" />
-    <ClInclude Include="test\test_triangle_01_02.h" />
+    <ClInclude Include="vendors\imgui\imconfig.h" />
+    <ClInclude Include="vendors\imgui\imgui.h" />
+    <ClInclude Include="vendors\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="vendors\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="vendors\imgui\imgui_internal.h" />
+    <ClInclude Include="vendors\imgui\imstb_rectpack.h" />
+    <ClInclude Include="vendors\imgui\imstb_textedit.h" />
+    <ClInclude Include="vendors\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\hello_triangle.frag" />

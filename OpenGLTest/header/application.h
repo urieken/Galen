@@ -2,7 +2,7 @@
 #define __APPLICATION_H__
 
 #include "core.h"
-#include "../test/test_list.h"
+#include "test_list.h"
 
 #include <string>
 

@@ -45,52 +45,52 @@
     <ClCompile Include="source\renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui.cpp">
+    <ClCompile Include="test\source\test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui_demo.cpp">
+    <ClCompile Include="test\source\test_clear_color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui_draw.cpp">
+    <ClCompile Include="test\source\test_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui_impl_glfw.cpp">
+    <ClCompile Include="test\source\test_polygon_01_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui_impl_opengl3.cpp">
+    <ClCompile Include="test\source\test_polygon_01_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\vendors\imgui\imgui_widgets.cpp">
+    <ClCompile Include="test\source\test_polygon_01_03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test.cpp">
+    <ClCompile Include="test\source\test_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_menu.cpp">
+    <ClCompile Include="test\source\test_triangle_01_01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_clear_color.cpp">
+    <ClCompile Include="test\source\test_triangle_01_02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_texture.cpp">
+    <ClCompile Include="test\source\test_triangle_01_03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_triangle_01_01.cpp">
+    <ClCompile Include="vendors\imgui\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_triangle_01_02.cpp">
+    <ClCompile Include="vendors\imgui\imgui_demo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_polygon_01_01.cpp">
+    <ClCompile Include="vendors\imgui\imgui_draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_polygon_01_02.cpp">
+    <ClCompile Include="vendors\imgui\imgui_impl_glfw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_polygon_01_03.cpp">
+    <ClCompile Include="vendors\imgui\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\test_triangle_01_03.cpp">
+    <ClCompile Include="vendors\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,64 +122,64 @@
     <ClInclude Include="header\renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imgui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imgui_impl_glfw.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imgui_impl_opengl3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imgui_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imstb_rectpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imstb_textedit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\vendors\imgui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_clear_color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_triangle_01_01.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_triangle_01_02.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_triangle_01_03.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_polygon_01_01.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_polygon_01_02.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="test\test_polygon_01_03.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="header\debugbreak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_clear_color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_01.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_02.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_polygon_01_03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_01.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_02.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\header\test_triangle_01_03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendors\imgui\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
