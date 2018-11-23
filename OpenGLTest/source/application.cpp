@@ -96,6 +96,47 @@ bool Application::ShowBackButton() {
 	return bReturn;
 }
 
+void Application::ShowMainMenuBar()
+{
+	if (ImGui::BeginMainMenuBar()) {
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Exit")) {
+
+			}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
+}
+
+void Application::ShowToolTipMarker(const std::string& toolTip)
+{
+	ImGui::TextDisabled("(?)");
+	if (ImGui::IsItemHovered()) {
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted(toolTip.c_str());
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+}
+
+void Application::ShowGlobalDetails() {
+	ImGui::SetNextWindowBgAlpha(0.5f);
+	ImGui::Begin("Application Details");
+	ImGui::SameLine();
+	ShowToolTipMarker("Global application details");
+	ImGui::Separator();
+	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "FRAMES PER SECOND              : %.1f",
+		ImGui::GetIO().Framerate);
+	ImGui::Separator();
+	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "AVERAGE MILLISECONDS PER FRAME : %.3f",
+		1000.0f / ImGui::GetIO().Framerate);
+	ImGui::Separator();
+	ImGui::End();
+}
+
 void Application::RenderImGui()
 {
 	ImGui::Render();
@@ -141,18 +182,7 @@ int Application::Run()
 	Test::TestMenu* pTestMenu = new Test::TestMenu(pCurrentTest);
 	pCurrentTest = pTestMenu;
 
-	RegisterTests(pTestMenu);
-
-	//pTestMenu->RegisterTest<Test::ClearColor>("CLEAR COLOR TEST            ");
-	//pTestMenu->RegisterTest<Test::Texture>("TEXTURE TEST                ");
-	//pTestMenu->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE       ");
-	//pTestMenu->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01      ");
-	//pTestMenu->RegisterTest<Test::TestTriangle_01_03>("TRIANGLE TEST 01 EX 02 VAOs ");
-
-
-	//pTestMenu->RegisterTest<Test::TestPolygon_01_01>("POLYGON TEST 01 BASE        ");
-	//pTestMenu->RegisterTest<Test::TestPolygon_01_02>("POLYGON TEST 01 EX 01 SHADER");
-	//pTestMenu->RegisterTest<Test::TestPolygon_01_03>("POLYGON TEST 01 EX 03 COLORS");
+	RegisterTests(pTestMenu);;
 
 	std::unique_ptr<Renderer> pRenderer{ std::make_unique<Renderer>() };
 	pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -162,18 +192,18 @@ int Application::Run()
 		bDone = ::glfwWindowShouldClose(m_pWindow);
 		pRenderer->Clear();
 		CreateImGuiFrame();
-		ImGui::SetNextWindowBgAlpha(0.5f);
-
 		if (nullptr != pCurrentTest) {
 			pCurrentTest->OnUpdate(0.0f);
 			pCurrentTest->OnRender();
+			ShowMainMenuBar();
+			ImGui::SetNextWindowBgAlpha(0.5f);
 			ImGui::Begin("Galen's OpenGL research");
 			if ((pCurrentTest != pTestMenu) && ShowBackButton()) {
 				delete pCurrentTest;
 				pCurrentTest = pTestMenu;
 				pRenderer->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			}
-			ImGui::TextColored({ 1.0, 1.0, 0.0, 1.0 }, "Review C++ and Math using OpenGL");
+			ImGui::TextColored({ 1.0, 1.0, 0.0, 1.0 }, "C++ and Math review using OpenGL");
 			ImGui::Separator();
 			bDone = ImGui::Button("QUIT"); 
 			ImGui::SameLine();
@@ -188,17 +218,7 @@ int Application::Run()
 			pCurrentTest->OnImGuiRender();
 			ImGui::End();
 		}
-		ImGui::SetNextWindowBgAlpha(0.5f);
-		ImGui::Begin("Application Details");
-		ImGui::Separator();
-		ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "FRAMES PER SECOND              : %.1f",
-			ImGui::GetIO().Framerate);
-		ImGui::Separator();
-		ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "AVERAGE MILLISECONDS PER FRAME : %.3f",
-			1000.0f / ImGui::GetIO().Framerate);
-		ImGui::Separator();
-		ImGui::End();
-
+		ShowGlobalDetails();
 		RenderImGui();
 		::glfwSwapBuffers(m_pWindow);
 		::glfwPollEvents();

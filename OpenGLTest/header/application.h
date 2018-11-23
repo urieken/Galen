@@ -4,6 +4,8 @@
 #include "core.h"
 #include "../test/test_list.h"
 
+#include <string>
+
 class Application {
 	GLFWwindow* m_pWindow;
 	
@@ -16,6 +18,9 @@ class Application {
 	void RegisterTests(Test::TestMenu* pTest);
 
 	bool ShowBackButton();
+	void ShowMainMenuBar();
+	void ShowToolTipMarker(const std::string & toolTip);
+	void ShowGlobalDetails();
 
 public:
 	Application();
