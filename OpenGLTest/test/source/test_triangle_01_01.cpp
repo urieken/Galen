@@ -26,7 +26,7 @@ namespace Test {
 	{
 		LOG_SCOPE(__FUNCTION__);
 		m_pLayout = std::make_unique<VertexBufferLayout>();
-		m_pLayout->Push<float>(3);
+		m_pLayout->Push(3, GL_FLOAT, GL_FALSE);
 	}
 
 	void TestTriangle_01_01::SetupVertexBuffer()

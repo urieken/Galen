@@ -22,7 +22,6 @@
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{8EFB5DCB-C0C4-1670-5938-A0E0F1A1C5EA}</ProjectGuid>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
@@ -74,26 +73,26 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>glewinfod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>glewinfod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>glewinfo</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>glewinfo</TargetName>
   </PropertyGroup>

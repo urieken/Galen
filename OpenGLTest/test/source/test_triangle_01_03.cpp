@@ -54,10 +54,12 @@ namespace Test {
 		LOG_SCOPE(__FUNCTION__);
 		m_layouts.push_back(std::make_unique<VertexBufferLayout>());
 		m_layouts.push_back(std::make_unique<VertexBufferLayout>());
-		m_layouts[0]->Push<float>(3);
+		//m_layouts[0]->Push<float>(3);
+                m_layouts[0]->Push(3, GL_FLOAT, GL_FALSE);
 		m_VAs[0]->AddBuffer(*m_VBs[0], *m_layouts[0]);
 
-		m_layouts[1]->Push<float>(3);
+		//m_layouts[1]->Push<float>(3);
+                m_layouts[1]->Push(3, GL_FLOAT, GL_FALSE);
 		m_VAs[1]->AddBuffer(*m_VBs[1], *m_layouts[1]);
 	}
 

@@ -26,8 +26,8 @@ namespace Test {
 			static_cast<unsigned int>(vertices.size() * sizeof(float)));
 
 		m_pLayout = std::make_unique<VertexBufferLayout>();
-		m_pLayout->Push<float>(2);
-		m_pLayout->Push<float>(2);
+                m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
+                m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
 		m_pVA->AddBuffer(*m_pVB.get(), *m_pLayout.get());
 
 		m_pIB = std::make_unique<IndexBuffer>(

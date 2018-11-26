@@ -7,9 +7,9 @@ namespace Test {
 		LOG_SCOPE(__FUNCTION__);
 		std::vector<float> vertices{
 			// X     Y     R     G     B
-			-0.5f, -0.5f, 1.0f, 1.0f, 1.0f,  // 0
+			-0.5f, -0.5f, 1.0f, 0.0f, 1.0f,  // 0
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  // 1
-			 0.0f,  0.5f, 1.0f, 0.0f, 1.0f   // 2
+			 0.0f,  0.5f, 0.0f, 0.0f, 1.0f   // 2
 		};
 		m_pVB = std::make_unique<VertexBuffer>(
 			reinterpret_cast<const void*>(vertices.data()),
@@ -21,8 +21,10 @@ namespace Test {
 	{
 		LOG_SCOPE(__FUNCTION__);
 		m_pLayout = std::make_unique<VertexBufferLayout>();
-		m_pLayout->Push<float>(2);
-		m_pLayout->Push<float>(3);
+		//m_pLayout->Push<float>(2);
+		//m_pLayout->Push<float>(3);
+                m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
+                m_pLayout->Push(3, GL_FLOAT, GL_FALSE);
 	}
 
 	void TestPolygon_01_03::SetupIndexBuffer()

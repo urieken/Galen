@@ -22,7 +22,6 @@
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{79AA8443-86F4-649A-0BEB-0CB5E51B7D7E}</ProjectGuid>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
@@ -74,26 +73,26 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>visualinfod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>visualinfod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>visualinfo</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BIN_DIR)\$(Configuration)\$(PlatformName)\</OutDir>
+    <IntDir>tmp\$(TargetName)\$(Configuration)\$(PlatformName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>visualinfo</TargetName>
   </PropertyGroup>

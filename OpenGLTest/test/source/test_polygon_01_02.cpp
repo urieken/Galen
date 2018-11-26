@@ -32,7 +32,7 @@ namespace Test {
 	void TestPolygon_01_02::OnInitialize()
 	{
 		LOG_SCOPE(__FUNCTION__);
-		m_timeStart = std::chrono::high_resolution_clock::now();
+		//m_timeStart = std::chrono::high_resolution_clock::now();
 		SetupVertexArray();
 		SetupVertexBuffer();
 		SetupLayout();
@@ -47,11 +47,13 @@ namespace Test {
 	}
 
 	void TestPolygon_01_02::OnUpdate(float delta_time) {
+            /*
 		std::chrono::time_point<std::chrono::steady_clock> timeNow{
 			std::chrono::high_resolution_clock::now() };
 		float time{ std::chrono::duration_cast<std::chrono::duration<float>>(timeNow - m_timeStart).count() };
-
-		glm::vec3 color{ (std::sinf(time  * 4.0f) + 1.0f) /2.0f, 0.0f, 0.0f };
+                */
+		//glm::vec3 color{ (std::sinf(time  * 4.0f) + 1.0f) /2.0f, 0.0f, 0.0f };
+                glm::vec3 color{ 0.5f, 0.0f, 0.0f };
 		m_pShaders->Bind();
 		m_pShaders->SetUniform3fv("u_Color", glm::value_ptr(color));
 	}

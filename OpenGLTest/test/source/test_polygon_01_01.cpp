@@ -29,7 +29,8 @@ namespace Test {
 	{
 		LOG_SCOPE(__FUNCTION__);
 		m_pLayout = std::make_unique<VertexBufferLayout>();
-		m_pLayout->Push<float>(2);
+		//m_pLayout->Push<float>(2);
+                m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
 	}
 
 	void TestPolygon_01_01::SetupShaders()

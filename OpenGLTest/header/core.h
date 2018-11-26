@@ -20,4 +20,4 @@ void GLClearError();
 bool GLLogCall(const char* function, const char* file, int line);
 void glfw_error_callback(int error, const char* description);
 
-#endif __CORE_H__
+#endif // __CORE_H__

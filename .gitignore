@@ -9,4 +9,8 @@
 /vendors/*
 /logger
 /OpenGLTest/imgui.ini
+/OpenGLTest/vendors/glew/auto/*
+/OpenGLTest/vendors/glew/build/*
+/OpenGLTest/vendors/glew/doc/*
+
 

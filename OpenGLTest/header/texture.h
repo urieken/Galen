@@ -24,4 +24,4 @@ public:
 	inline int GetChannels() const { return m_channels; }
 };
 
-#endif __TEXTURE_H__
+#endif // __TEXTURE_H__
