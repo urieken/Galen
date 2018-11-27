@@ -23,6 +23,8 @@ namespace Test {
             int                                 m_newMode;
             glm::vec4                           m_color;
 
+            virtual GLuint LoadVertexData(std::vector<GLfloat>& vertices);
+
             virtual void SetupVertexArray();
             virtual void SetupVertexBuffer();
             virtual void SetupLayout();

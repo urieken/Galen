@@ -50,7 +50,11 @@ list(APPEND source_files
     )
 
 add_executable(OpenGLTest ${source_files})
-
+if(WIN32)
 target_link_libraries(OpenGLTest logger glew glfw opengl32)
+endif(WIN32)
+if(UNIX)
+target_link_libraries(OpenGLTest logger glew glfw GL)
+endif(UNIX)
 
 

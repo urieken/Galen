@@ -3,6 +3,8 @@
 #include "glm.hpp"
 #include "gtc/type_ptr.hpp"
 
+#include <cmath>
+
 namespace Test {
 
 	void TestPolygon_01_02::SetupShaders()
@@ -54,7 +56,7 @@ namespace Test {
 			m_deltaTime = 0.0f;
 		}
 		
-        glm::vec3 color{ (std::sinf(m_deltaTime  * 0.5f) + 0.5f), 0.0f, 0.0f };
+        glm::vec3 color{ (std::sin(m_deltaTime  * 0.5f) + 0.5f), 0.0f, 0.0f };
         //glm::vec3 color{ 0.5f, 0.0f, 0.0f };
 		m_pShaders->Bind();
 		m_pShaders->SetUniform3fv("u_Color", glm::value_ptr(color));
