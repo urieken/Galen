@@ -1,6 +1,7 @@
 #ifndef __TEST_POLYGON_H__
 #define __TEST_POLYGON_H__
 
+#include "glm.hpp"
 #include "test.h"
 
 #include "renderer.h"
@@ -17,6 +18,10 @@ namespace Test {
             std::unique_ptr<VertexBufferLayout> m_pLayout;
             std::unique_ptr<ShaderProgram>      m_pShader;
             std::unique_ptr<Renderer>           m_pRenderer;
+
+            int                                 m_mode;
+            int                                 m_newMode;
+            glm::vec4                           m_color;
 
             virtual void SetupVertexArray();
             virtual void SetupVertexBuffer();

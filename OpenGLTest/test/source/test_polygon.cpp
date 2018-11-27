@@ -1,6 +1,8 @@
 #include "test_polygon.h"
 
 #include "imgui.h"
+#include "gtc/matrix_transform.hpp"
+#include "gtc/type_ptr.hpp"
 
 namespace Test {
 
@@ -52,6 +54,8 @@ namespace Test {
         , m_pLayout{nullptr}
         , m_pShader{nullptr}
         , m_pRenderer{nullptr}
+        , m_mode{0}
+        , m_color{0.0f, 0.0f, 0.0f, 1.0f}
     {
 
     }
@@ -80,7 +84,23 @@ namespace Test {
 
     void TestPolygon::OnUpdate(float delta)
     {
-
+        if(m_mode != m_newMode){
+            m_mode = m_newMode;
+            m_pShader.reset(new ShaderProgram{});
+            shader_map shaders;
+            if(1 == m_mode){
+                insert_shader(shaders, "res/shaders/polygon.vert", GL_VERTEX_SHADER);
+                insert_shader(shaders, "res/shaders/polygon_uniform.frag", GL_FRAGMENT_SHADER);
+            }else{
+                insert_shader(shaders, "res/shaders/polygon.vert", GL_VERTEX_SHADER);
+                insert_shader(shaders, "res/shaders/polygon.frag", GL_FRAGMENT_SHADER);
+            }
+            m_pShader = std::make_unique<ShaderProgram>();
+            if(m_pShader->CompileShaders(shaders) && m_pShader->LinkProgram()){
+                m_pShader->Bind();
+                shaders.clear();
+            }
+        }
     }
     
     void TestPolygon::OnRender()
@@ -91,9 +111,32 @@ namespace Test {
 
     void TestPolygon::OnImGuiRender()
     {
-        ImGui::Text("Milliseconds Per Frame : %.3f", 
-            1000.0f / ImGui::GetIO().Framerate);
-        ImGui::Text("Frames Per Second      : %.1f",
-            ImGui::GetIO().Framerate);
+        ImGui::Spacing();
+        if(ImGui::CollapsingHeader("Description")){
+            ImGui::TextColored({0.0, 1.0, 0.0, 1.0}, "Polygon Test");
+            ImGui::Separator();
+            switch(m_mode){
+                case 0:{
+                    ImGui::BulletText("Draw a basic triangle with a pre-defined color");
+                    ImGui::BulletText("The color is hard coded in the vertex shader");
+                }break;
+                case 1:{
+                    ImGui::BulletText("Draw a basic triangle with a specified color");
+                    ImGui::BulletText("Color data is sent to the shader program via uniforms");
+                    ImGui::ColorEdit3("Clear Color", glm::value_ptr(m_color));
+                    m_pShader->Bind();
+                    m_pShader->SetUniform4fv("u_Color", glm::value_ptr(m_color));
+                }break;
+                case 2:{
+                    ImGui::BulletText("Draw a basic triangle with interpolated color");
+                    ImGui::BulletText("Color data is specified in the vertex buffer");
+                    ImGui::BulletText("Color is rendered from one vertex to another via interpolation");
+                }break;
+            }
+            ImGui::Separator();
+            ImGui::RadioButton("MODE 0", &m_newMode, 0); ImGui::SameLine();
+            ImGui::RadioButton("MODE 1", &m_newMode, 1); ImGui::SameLine();
+            ImGui::RadioButton("MODE 2", &m_newMode, 2); 
+        }
     }
 }

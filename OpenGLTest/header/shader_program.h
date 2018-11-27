@@ -43,9 +43,10 @@ public:
 	void SetUniform4f(const std::string& name, float f0, float f1, float f2, float f3);
 	void SetUniformMat4f(int location, const float* pData);
 	void SetUniformMat4f(const std::string& name, const float* pData);
-
 	void SetUniform3fv(int location, const float* pData);
 	void SetUniform3fv(const std::string& name, const float* pData);
+	void SetUniform4fv(int location, const float* pData);
+	void SetUniform4fv(const std::string& name, const float* pData);
 
 };
 

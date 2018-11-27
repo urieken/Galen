@@ -173,3 +173,13 @@ void ShaderProgram::SetUniform3fv(const std::string& name, const float* pData)
 	GLCall(::glUniform3fv(GetUniformLocation(name), 1, pData));
 }
 
+void ShaderProgram::SetUniform4fv(int location, const float* pData)
+{
+	GLCall(::glUniform4fv(location, 1, pData));
+}
+
+void ShaderProgram::SetUniform4fv(const std::string& name, const float* pData)
+{
+	GLCall(::glUniform4fv(GetUniformLocation(name), 1, pData));
+}
+
