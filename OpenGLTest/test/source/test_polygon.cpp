@@ -23,9 +23,9 @@ namespace Test {
             case 2:{
                 std::vector<GLfloat> temp{
                     // X    Y
-                    -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, // 0
+                    -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // 0
                      0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // 1
-                     0.0f,  0.5f, 0.0f, 0.0f, 1.0f, // 2
+                     0.0f,  0.5f, 1.0f, 0.0f, 0.0f, // 2
                 };
                 vertices = temp;
                 attributeCount = 5;
