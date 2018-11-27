@@ -58,6 +58,7 @@ void Application::RegisterTests(Test::TestMenu* pTest) {
 
 	pTest->RegisterTest<Test::ClearColor>("CLEAR COLOR TEST            ");
 	pTest->RegisterTest<Test::TextureTest>("TEXTURE TEST                ");
+	pTest->RegisterTest<Test::TestPolygon>("POLYGON TEST                ");
 	pTest->RegisterTest<Test::TestTriangle_01_01>("TRIANGLE TEST 01 BASE       ");
 	pTest->RegisterTest<Test::TestTriangle_01_02>("TRIANGLE TEST 01 EX 01      ");
 	pTest->RegisterTest<Test::TestTriangle_01_03>("TRIANGLE TEST 01 EX 02 VAOs ");

@@ -3,13 +3,10 @@
 
 #include "test_polygon_01_01.h"
 
-#include <chrono>
-
 namespace Test {
 	class TestPolygon_01_02 : public TestPolygon_01_01 {
 	protected:
-		std::chrono::time_point<std::chrono::steady_clock> m_timeStart;
-
+		float m_deltaTime;
 		virtual void SetupShaders();
 	public:
 		TestPolygon_01_02();

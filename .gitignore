@@ -8,6 +8,9 @@
 *.user
 /vendors/*
 /logger
+/build
+/builds
+/OpenGLTest/.vscode
 /OpenGLTest/imgui.ini
 /OpenGLTest/vendors/glew/auto/*
 /OpenGLTest/vendors/glew/build/*

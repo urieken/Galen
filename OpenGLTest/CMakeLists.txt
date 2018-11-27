@@ -6,7 +6,7 @@ add_subdirectory(vendors/glew/build/cmake)
 
 add_definitions(-D_DEBUG -DIMGUI_IMPL_OPENGL_LOADER_GLEW)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 include_directories(header
     vendors/glew/include
@@ -34,6 +34,7 @@ list(APPEND source_files
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_menu.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_clear_color.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_texture.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/test/source/test_polygon.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_01.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_02.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_03.cpp"
@@ -49,4 +50,7 @@ list(APPEND source_files
     )
 
 add_executable(OpenGLTest ${source_files})
-target_link_libraries(OpenGLTest logger glew glfw GL)
+
+target_link_libraries(OpenGLTest logger glew glfw opengl32)
+
+
