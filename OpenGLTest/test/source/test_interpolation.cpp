@@ -7,6 +7,8 @@ namespace Test{
     , m_vao{0}
     , m_vbo{0}
     , m_pShader{nullptr}
+    , m_posAttrib{0}
+    , m_colAttrib{1}
     {
 
     }
@@ -18,7 +20,7 @@ namespace Test{
 
     void Interpolation::OnInitialize(){
         // Create Vertex Array Object
-        ::glGetVertexArrays(1, &m_vao);
+        ::glGenVertexArrays(1, &m_vao);
         ::glBindVertexArray(m_vao);
 
         // Create Vertex Buffer Object
@@ -36,10 +38,30 @@ namespace Test{
         // Create and compile shaders
         m_pShader.reset(new ShaderProgram{});
         shader_map shaders;
+
         insert_shader(shaders, "res/shaders/polygon_interpolation.vert", GL_VERTEX_SHADER);
         insert_shader(shaders, "res/shaders/polygon_interpolation.frag", GL_FRAGMENT_SHADER);
+
+        if(m_pShader->CompileShaders(shaders) && m_pShader->LinkProgram()){
+            m_pShader->Bind();
+            shaders.clear();
+        }
+
+        m_pShader->SetAttributeLocation("position", m_posAttrib);
+        m_pShader->SetAttributeLocation("color", m_colAttrib);
+
+        m_posAttrib = m_pShader->GetAttributeLocation("position");
+        m_colAttrib = m_pShader->GetAttributeLocation("color");
         
 
+        LOG_INFO("POSITION ATTRIBUTE : %d", m_posAttrib);
+        ::glEnableVertexAttribArray(m_posAttrib);
+        ::glVertexAttribPointer(m_posAttrib, 2, GL_FLOAT, GL_FALSE, 
+                                5 * sizeof(GLfloat), 0);
+        LOG_INFO("COLOR ATTRIBUTE    : %d", m_colAttrib);
+        ::glEnableVertexAttribArray(m_colAttrib);
+        ::glVertexAttribPointer(m_colAttrib, 3, GL_FLOAT, GL_FALSE, 
+                                5 * sizeof(GLfloat), (void*)(2 * sizeof(GL_FLOAT)));
     }
 
     void Interpolation::OnUpdate(float data){
@@ -47,7 +69,8 @@ namespace Test{
     }
 
     void Interpolation::OnRender(){
-
+        ::glClear(GL_COLOR_BUFFER_BIT);
+        ::glDrawArrays(GL_TRIANGLES, 0, 3);
     }
 
     void Interpolation::OnImGuiRender(){

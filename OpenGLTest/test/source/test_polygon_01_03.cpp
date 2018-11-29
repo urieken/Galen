@@ -23,8 +23,8 @@ namespace Test {
 		m_pLayout = std::make_unique<VertexBufferLayout>();
 		//m_pLayout->Push<float>(2);
 		//m_pLayout->Push<float>(3);
-                m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
-                m_pLayout->Push(3, GL_FLOAT, GL_FALSE);
+        m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
+        m_pLayout->Push(3, GL_FLOAT, GL_FALSE);
 	}
 
 	void TestPolygon_01_03::SetupIndexBuffer()
@@ -47,8 +47,8 @@ namespace Test {
 		m_pShaders = std::make_unique<ShaderProgram>();
 		if (m_pShaders->CompileShaders(shaders) && m_pShaders->LinkProgram()) {
 			m_pShaders->Bind();
-			LOG_INFO("position : %d", m_pShaders->GetAttributiteLocation("position"));
-			LOG_INFO("color    : %d", m_pShaders->GetAttributiteLocation("color"));
+			LOG_INFO("position : %d", m_pShaders->GetAttributeLocation("position"));
+			LOG_INFO("color    : %d", m_pShaders->GetAttributeLocation("color"));
 			shaders.clear();
 		}
 	}

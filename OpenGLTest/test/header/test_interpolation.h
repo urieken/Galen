@@ -9,6 +9,9 @@ namespace Test {
         GLuint                         m_vao;
         GLuint                         m_vbo;
         std::unique_ptr<ShaderProgram> m_pShader;
+        GLint m_posAttrib;
+        GLint m_colAttrib;
+        
         public: 
             Interpolation();
             virtual ~Interpolation();

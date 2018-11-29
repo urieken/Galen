@@ -5,6 +5,7 @@
 #include "test_menu.h"
 #include "test_polygon.h"
 #include "test_texture.h"
+#include "test_interpolation.h"
 #include "test_clear_color.h"
 #include "test_triangle_01_01.h"
 #include "test_triangle_01_02.h"

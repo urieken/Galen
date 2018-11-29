@@ -75,6 +75,7 @@ namespace Test {
                 m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
             }break;
         }
+        m_pVA->AddBuffer(*m_pVB, *m_pLayout);
     }
 
     void TestPolygon::SetupShaders(){
@@ -101,10 +102,18 @@ namespace Test {
         }
         //m_pShader = std::make_unique<ShaderProgram>();
         m_pShader.reset(new ShaderProgram{});
-        if(m_pShader->CompileShaders(shaders) && m_pShader->LinkProgram()){
-            m_pShader->Bind();
-            shaders.clear();
-        }
+        m_pShader->CompileShaders(shaders);
+
+        m_pShader->SetAttributeLocation("position", 0);
+        m_pShader->SetAttributeLocation("color", 1);
+
+        m_pShader->LinkProgram();
+        m_pShader->Bind();
+
+        LOG_INFO("POSITION    : %d", m_pShader->GetAttributeLocation("position"));
+        LOG_INFO("COLOR       : %d", m_pShader->GetAttributeLocation("color"));
+
+        shaders.clear();
     }
 
     void TestPolygon::SetupRenderer(){

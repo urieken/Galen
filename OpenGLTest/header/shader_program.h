@@ -29,7 +29,8 @@ public:
 	void Bind() const;
 	void UnBind() const;
 
-	int GetAttributiteLocation(const std::string& name);
+	int GetAttributeLocation(const std::string& name);
+	void SetAttributeLocation(const std::string& name, int index);
 
 	int GetUniformLocation(const std::string& name);
 

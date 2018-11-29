@@ -35,6 +35,7 @@ list(APPEND source_files
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_clear_color.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_texture.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_polygon.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/test/source/test_interpolation.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_01.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_02.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/test/source/test_triangle_01_03.cpp"

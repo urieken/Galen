@@ -99,11 +99,15 @@ void ShaderProgram::UnBind() const{
 	GLCall(::glUseProgram(0));
 }
 
-int ShaderProgram::GetAttributiteLocation(const std::string& name)
+int ShaderProgram::GetAttributeLocation(const std::string& name)
 {
 	int location{ 0 };
 	GLCall(location = ::glGetAttribLocation(m_shaderProgram, name.c_str()));
 	return location;
+}
+
+void ShaderProgram::SetAttributeLocation(const std::string& name,int index){
+	GLCall(::glBindAttribLocation(m_shaderProgram, index, name.c_str()));
 }
 
 int ShaderProgram::GetUniformLocation(const std::string& name) {
