@@ -56,7 +56,7 @@ namespace Test {
         m_pVB = std::make_unique<VertexBuffer>(
           reinterpret_cast<const GLvoid*>(vertices.data()),
           static_cast<GLuint>(vertices.size() *  sizeof(GLfloat)));
-        m_pVB->SetVertexCount(vertices.size() / attributeCount);
+        m_pVB->SetVertexCount(static_cast<unsigned int>(vertices.size() / attributeCount));
     }
 
     void TestPolygon::SetupLayout(){
