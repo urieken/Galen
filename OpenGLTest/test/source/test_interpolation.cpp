@@ -47,9 +47,6 @@ namespace Test{
             shaders.clear();
         }
 
-        m_pShader->SetAttributeLocation("position", m_posAttrib);
-        m_pShader->SetAttributeLocation("color", m_colAttrib);
-
         m_posAttrib = m_pShader->GetAttributeLocation("position");
         m_colAttrib = m_pShader->GetAttributeLocation("color");
         
