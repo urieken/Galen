@@ -20,12 +20,24 @@ namespace Test {
                 vertices = temp;
                 attributeCount = 2;
             }break;
-            case 2:{
+            case 2:
+            case 3:
+            case 4:{
                 std::vector<GLfloat> temp{
                     // X    Y
                     -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // 0
                      0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // 1
                      0.0f,  0.5f, 1.0f, 0.0f, 0.0f, // 2
+                };
+                vertices = temp;
+                attributeCount = 5;
+            }break;
+            case 5:{
+                std::vector<GLfloat> temp{
+                    // X    Y
+                    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // 0
+                     0.5f, -0.5f, 0.5f, 0.5f, 0.5f, // 1
+                     0.0f,  0.5f, 1.0f, 1.0f, 1.0f, // 2
                 };
                 vertices = temp;
                 attributeCount = 5;
@@ -67,7 +79,10 @@ namespace Test {
             case 1:{
                 m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
             }break;
-            case 2:{
+            case 2:
+            case 3:
+            case 4:
+            case 5:{
                 m_pLayout->Push(2, GL_FLOAT, GL_FALSE);
                 m_pLayout->Push(3, GL_FLOAT, GL_FALSE);
             }break;
@@ -91,9 +106,18 @@ namespace Test {
                 insert_shader(shaders, "res/shaders/polygon_uniform.frag", GL_FRAGMENT_SHADER);
 
             }break;
-            case 2:{
+            case 2:
+            case 5:{
                 insert_shader(shaders, "res/shaders/polygon_interpolation.vert", GL_VERTEX_SHADER);
                 insert_shader(shaders, "res/shaders/polygon_interpolation.frag", GL_FRAGMENT_SHADER);
+            }break;
+            case 3:{
+                insert_shader(shaders, "res/shaders/polygon_invert.vert", GL_VERTEX_SHADER);
+                insert_shader(shaders, "res/shaders/polygon_interpolation.frag", GL_FRAGMENT_SHADER);
+            }break;
+            case 4:{
+                insert_shader(shaders, "res/shaders/polygon_interpolation.vert", GL_VERTEX_SHADER);
+                insert_shader(shaders, "res/shaders/polygon_invert.frag", GL_FRAGMENT_SHADER);
             }break;
             default:{
                 insert_shader(shaders, "res/shaders/polygon.vert", GL_VERTEX_SHADER);
@@ -181,15 +205,23 @@ namespace Test {
         if(ImGui::CollapsingHeader("Description")){
             ImGui::TextColored({0.0, 1.0, 0.0, 1.0}, "Polygon Test");
             ImGui::Separator();
+            ImGui::RadioButton("MODE 0", &m_newMode, 0); ImGui::SameLine();
+            ImGui::RadioButton("MODE 1", &m_newMode, 1); ImGui::SameLine();
+            ImGui::RadioButton("MODE 2", &m_newMode, 2); ImGui::SameLine();
+            ImGui::RadioButton("MODE 3", &m_newMode, 3); ImGui::SameLine();
+            ImGui::RadioButton("MODE 4", &m_newMode, 4); ImGui::SameLine();
+            ImGui::RadioButton("MODE 5", &m_newMode, 5); 
+            ImGui::Separator();
             switch(m_mode){
                 case 0:{
                     ImGui::BulletText("Draw a basic triangle with a pre-defined color");
                     ImGui::BulletText("The color is hard coded in the vertex shader");
                 }break;
                 case 1:{
+                    ImGui::ColorEdit3("Clear Color", glm::value_ptr(m_color));
+                    ImGui::Separator();
                     ImGui::BulletText("Draw a basic triangle with a specified color");
                     ImGui::BulletText("Color data is sent to the shader program via uniforms");
-                    ImGui::ColorEdit3("Clear Color", glm::value_ptr(m_color));
                     m_pShader->Bind();
                     m_pShader->SetUniform4fv("u_Color", glm::value_ptr(m_color));
                 }break;
@@ -198,6 +230,18 @@ namespace Test {
                     ImGui::BulletText("Color data is specified in the vertex buffer");
                     ImGui::BulletText("Color is rendered from one vertex to another via interpolation");
                 }break;
+                case 3:{
+                    ImGui::BulletText("Draw a basic triangle with interpolated color");
+                    ImGui::BulletText("Modify the vertex shader so that the triangle is inverted");
+                }break;
+                case 4:{
+                    ImGui::BulletText("Draw a basic triangle with interpolated color");
+                    ImGui::BulletText("Modify the fragment shader so that the colors are inverted");
+                }break;
+                case 5:{
+                    ImGui::BulletText("Draw a basic triangle with interpolated color");
+                    ImGui::BulletText("Modify the fragment shader amd code so that the colors are on greyscale");
+                }break;
                 default : {
                     m_mode = 0;
                     ImGui::BulletText("Draw a basic triangle with a pre-defined color");
@@ -205,9 +249,6 @@ namespace Test {
                 }break;
             }
             ImGui::Separator();
-            ImGui::RadioButton("MODE 0", &m_newMode, 0); ImGui::SameLine();
-            ImGui::RadioButton("MODE 1", &m_newMode, 1); ImGui::SameLine();
-            ImGui::RadioButton("MODE 2", &m_newMode, 2); 
         }
     }
 }
