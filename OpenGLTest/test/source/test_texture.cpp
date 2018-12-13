@@ -126,13 +126,21 @@ namespace Test {
 
 	void TextureTest::OnImGuiRender()
 	{
-		ImGui::SliderFloat3("Translation A", &m_trans_a.x, -1.0f, 1.0f);
-		ImGui::SliderFloat3("Translation B", &m_trans_b.x, -1.0f, 1.0f);
+		ImGui::Spacing();
+		ImGui::Separator();
+		ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 }, "Textures test");
+		ImGui::Separator();
+		if (ImGui::CollapsingHeader("Description")) {
+			ImGui::Separator();
+			ImGui::BulletText("This will test multiple texture renders");
+			ImGui::Separator();
+	
+			ImGui::SliderFloat3("Translation A", &m_trans_a.x, -1.0f, 1.0f);
+			ImGui::SliderFloat3("Translation B", &m_trans_b.x, -1.0f, 1.0f);
 
-		ImGui::ColorEdit3("clear color", (float*)&m_clear_color);
-		m_pRenderer->SetClearColor(m_clear_color.x, m_clear_color.y, 
-			m_clear_color.z, m_clear_color.w);
-
+			ImGui::ColorEdit3("clear color", (float*)&m_clear_color);
+			m_pRenderer->SetClearColor(m_clear_color.x, m_clear_color.y, 
+				m_clear_color.z, m_clear_color.w);
+		}
 	}
-
 }

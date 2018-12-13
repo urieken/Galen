@@ -141,10 +141,13 @@ namespace Test{
 
     void TestBlend::OnImguiRender(){
         ImGui::Spacing();
-        if(ImGui::CollapsingHeader("DESCRIPTION")){
-            ImGui::TextColored({0.0f, 1.0f, 0.0f, 1.0f}, "BLENDING TEST");
-            ImGui::Separator();
-            ImGui::Separator();
+        ImGui::Separator();
+        ImGui::TextColored({0.0f, 1.0f, 0.0f, 1.0f}, "Blending test");
+		ImGui::Separator();
+		if (ImGui::CollapsingHeader("Description")) {
+			ImGui::Separator();
+			ImGui::BulletText("This will test multiple texture renders");
+			ImGui::Separator();
         }
     }
 }

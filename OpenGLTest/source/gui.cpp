@@ -59,10 +59,12 @@ void Gui::GlobalDetails()
 	ImGui::SameLine();
 	ToolTipMarker("Global application details");
 	ImGui::Separator();
-	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "FRAMES PER SECOND              : %.1f",
+	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, 
+		"FRAMES PER SECOND              : %.1f",
 		ImGui::GetIO().Framerate);
 	ImGui::Separator();
-	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, "AVERAGE MILLISECONDS PER FRAME : %.3f",
+	ImGui::TextColored({ 0.5, 1.0, 0.5, 1.0 }, 
+		"AVERAGE MILLISECONDS PER FRAME : %.3f",
 		1000.0f / ImGui::GetIO().Framerate);
 	ImGui::Separator();
 	ImGui::End();

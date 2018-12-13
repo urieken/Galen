@@ -154,6 +154,7 @@ namespace Test {
         , m_pRenderer{nullptr}
         , m_mode{0}
         , m_color{0.0f, 0.0f, 0.0f, 1.0f}
+        , m_newMode{0}
     {
 
     }
@@ -202,15 +203,17 @@ namespace Test {
     void TestPolygon::OnImGuiRender()
     {
         ImGui::Spacing();
+        ImGui::Separator();
+        ImGui::TextColored({0.0, 1.0, 0.0, 1.0}, "Polygon test");
+        ImGui::Separator();
+        ImGui::RadioButton("MODE 0", &m_newMode, 0); ImGui::SameLine();
+        ImGui::RadioButton("MODE 1", &m_newMode, 1); ImGui::SameLine();
+        ImGui::RadioButton("MODE 2", &m_newMode, 2); ImGui::SameLine();
+        ImGui::RadioButton("MODE 3", &m_newMode, 3); ImGui::SameLine();
+        ImGui::RadioButton("MODE 4", &m_newMode, 4); ImGui::SameLine();
+        ImGui::RadioButton("MODE 5", &m_newMode, 5); 
+        ImGui::Separator();
         if(ImGui::CollapsingHeader("Description")){
-            ImGui::TextColored({0.0, 1.0, 0.0, 1.0}, "Polygon Test");
-            ImGui::Separator();
-            ImGui::RadioButton("MODE 0", &m_newMode, 0); ImGui::SameLine();
-            ImGui::RadioButton("MODE 1", &m_newMode, 1); ImGui::SameLine();
-            ImGui::RadioButton("MODE 2", &m_newMode, 2); ImGui::SameLine();
-            ImGui::RadioButton("MODE 3", &m_newMode, 3); ImGui::SameLine();
-            ImGui::RadioButton("MODE 4", &m_newMode, 4); ImGui::SameLine();
-            ImGui::RadioButton("MODE 5", &m_newMode, 5); 
             ImGui::Separator();
             switch(m_mode){
                 case 0:{
@@ -218,10 +221,10 @@ namespace Test {
                     ImGui::BulletText("The color is hard coded in the vertex shader");
                 }break;
                 case 1:{
-                    ImGui::ColorEdit3("Clear Color", glm::value_ptr(m_color));
-                    ImGui::Separator();
                     ImGui::BulletText("Draw a basic triangle with a specified color");
                     ImGui::BulletText("Color data is sent to the shader program via uniforms");
+                    ImGui::Separator();
+                    ImGui::ColorEdit3("Color", glm::value_ptr(m_color));
                     m_pShader->Bind();
                     m_pShader->SetUniform4fv("u_Color", glm::value_ptr(m_color));
                 }break;
@@ -240,7 +243,7 @@ namespace Test {
                 }break;
                 case 5:{
                     ImGui::BulletText("Draw a basic triangle with interpolated color");
-                    ImGui::BulletText("Modify the fragment shader amd code so that the colors are on greyscale");
+                    ImGui::BulletText("Modify the fragment shader and code so that the colors are on greyscale");
                 }break;
                 default : {
                     m_mode = 0;

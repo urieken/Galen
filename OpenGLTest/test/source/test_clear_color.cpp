@@ -32,12 +32,14 @@ namespace Test
 	void ClearColor::OnImGuiRender()
 	{
 		ImGui::Spacing();
+		ImGui::Separator();
+		ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 }, "Clear color test");
+		ImGui::Separator();
 		if (ImGui::CollapsingHeader("Description")) {
-			ImGui::TextColored({ 0.0, 1.0, 0.0, 1.0 }, "Clear color test");
+			ImGui::Separator();
 			ImGui::BulletText("This test is to simply verify changes in the clear color");
+			ImGui::Separator();
+			ImGui::ColorEdit3("Clear Color", m_clearColor);
 		}
-		ImGui::Separator();
-		ImGui::ColorEdit3("Clear Color", m_clearColor);
-		ImGui::Separator();
 	}
 }
